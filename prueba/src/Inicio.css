@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Aplica la fuente Poppins a todos los elementos */
+body, h1, h2, h3, h4, h5, h6, p, a, button, .navbar, .carousel-caption, .card-title, .card-text, .btn {
+  font-family: 'Poppins', sans-serif;
+}
+
+.blue-background {
+  background-color: #003087;
+  position: absolute;
+  top: 0px;
+  left: 50px;
+  bottom: -50px;
+  min-height: 600px;
+  width: 56vh;
+  border-radius: 30px;
+  z-index: 0;
+}
+
+.gray-background {
+  background-color: #DCDCDC;
+  margin-top: 120px;
+  margin-bottom: 120px;
+  border-radius: 20px;
+  min-height: 600px;
+  width: 56vh;
+  position: relative;
+  padding: 20px;
+  z-index: 1;
+}

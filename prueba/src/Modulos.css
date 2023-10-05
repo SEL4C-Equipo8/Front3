@@ -1,0 +1,79 @@
+/* ExpandableBoxes.css */
+
+.container {
+  width: 80%;
+  margin: 30px auto;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1; /* Para que el botón de cerrar esté por encima del contenido */
+}
+
+
+.card {
+  margin-bottom: 50px;
+  height: 350px; /* Cambia la altura de la tarjeta según tus preferencias */
+}
+
+.card-header {
+  background-color: #f8f9fa; /* Cambia el color de fondo de la cabecera del card según tus preferencias */
+}
+
+.card-body {
+  padding: 0; /* Elimina el espacio interno del card body */
+  margin-top: 3%;
+}
+
+.expandable-boxes {
+  position: relative;
+}
+
+.expandable-box {
+  
+  width: 90%;
+  height: 150px;
+  float: left;
+  margin: 0 3% 20px 0;
+  border: 1px solid #999;
+  border-radius: 12px;
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative; /* Añade position relative */
+}
+
+
+.expandable-box.open {
+  border-color: #dd0000;
+  width: 96%;
+  height: 180px;
+  margin: 0;
+}
+
+.expandable-box.out {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  border: none;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+}
+
+.expandable-box.expanded {
+  height: auto;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out; /* Aplicar la transición solo a la propiedad de altura cuando está expandida */
+}
+.expandable-box.full-screen {
+  width: 100%;
+  height: 80vh;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  transition: all 0.3s ease-in-out; /* Añade la transición solo a la caja expandida */
+}
