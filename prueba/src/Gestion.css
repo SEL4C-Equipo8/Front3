@@ -60,38 +60,32 @@
   background: rgba(0, 0, 0, 0.17);
 }
 
+/* Descripción */
+
 .demo-card h2 {
   text-transform: uppercase;
-  font-size: 1.3rem;
+  font-size: 0.7rem;
   font-weight: inherit;
   letter-spacing: 2px;
-  margin: 0;
+  margin: 10px;
   padding-bottom: 6px;
   line-height: 1rem;
 }
 
+
+/* Titulo */
 .demo-card .small {
   display: block;
-  font-size: 0.6rem;
-  margin: 0;
+  font-size: 1.8rem;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 /* Estilos para diferentes tarjetas */
-.demo-card--step1 {
+.demo-card--step {
   background-color: #003087;
 }
 
-.demo-card--step2 {
-  background-color: #003087;
-}
-
-.demo-card--step3 {
-  background-color: #003087;
-}
-
-.demo-card--step4 {
-  background-color: #003087;
-}
 
 
 

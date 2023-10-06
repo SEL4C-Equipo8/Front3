@@ -1,177 +1,114 @@
-import React, { useState } from 'react'; // Importa useState desde React
-import { Row, Col, Container,Button } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Row, Col, Container, Button } from 'react-bootstrap';
 import './Gestion.css';
-import CustomButton from './components/CustomButton';
 import Header from './components/Header';
-import Popup from './components/Popup';
-import { Modal } from 'react-bootstrap';
-import { Link } from 'react-router-dom'; // Importa el componente Link
 import CustomModalA from './components/CustomModalA';
-
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Gestion() {
   const [showModal, setShowModal] = useState(false);
+  const [activities, setActivities] = useState([]); // Agrega un estado para almacenar las actividades
+
   const handleOpenModal = () => {
     setShowModal(true);
   }
+
   const handleCloseModal = () => {
     setShowModal(false);
   }
 
+  // Función para cargar las actividades desde el servidor
+  const loadActivities = async () => {
+    try {
+      console.log('Token de autorización:', localStorage.getItem('token')); // Agrega esta línea
+      const response = await axios.get('/api/admin/activities/all/', {
+        headers: {
+          'Authorization': `Bearer + token${localStorage.getItem('token')}`,
+        },
+      });
   
+      console.log('Respuesta de Axios:', response); // Agrega esta línea
+  
+      if (response.status === 200) {
+        setActivities(response.data);
+      }
+    } catch (error) {
+      console.error('Error al cargar las actividades:', error);
+      // Aquí puedes mostrar un mensaje de error al usuario o realizar otras acciones de manejo de errores.
+    }
+  };
+  
+
+  // Llama a la función para cargar las actividades cuando el componente se monta
+  useEffect(() => {
+    loadActivities();
+  }, []);
+
   return (
     <div>
       <Header></Header>
-      <section id="timeline" style={{backgroundColor: '#DFE0DA'}}>
-      <Container >
-    
-      <h1 style={{ fontWeight: '500',fontSize:'350%' ,marginTop:'0px',marginBottom:'40px'}}>Actividades</h1>
-        <p className="leader" style={{ fontWeight: '400',fontSize:'140%',marginBottom:'45px' }}>
-          En esta sección podras crear, modificar y eliminar las actividades.
-        </p>
-        <div style={{ display: 'flex', justifyContent: 'center' , marginRight: '0%', marginTop: '4%',marginBottom: '12%'}}>
-                <Button variant="outline-light" style={{width: '380px',  height: '85px', borderRadius: '20px',borderColor: '#003087',borderWidth: '2.5px',color: 'black' ,fontSize: '20px',}} onClick={handleOpenModal}>
-                Crear Actividad
-              </Button>{' '}
-              <div style={{ marginRight: '20px' }}></div> {/* Espacio */} 
-              <Link to="/modulos"> {/* Agrega un enlace al botón */}
-              <Button variant="outline-light" style={{ width: '380px', height: '85px',borderRadius: '20px',borderColor: '#003087',borderWidth: '2.5px',color: 'black', fontSize: '20px' }}>
+      <section id="timeline" style={{ backgroundColor: '#DFE0DA' }}>
+        <Container>
+          <h1 style={{ fontWeight: '500', fontSize: '350%', marginTop: '0px', marginBottom: '40px' }}>Actividades</h1>
+          <p className="leader" style={{ fontWeight: '400', fontSize: '140%', marginBottom: '45px' }}>
+            En esta sección podrás crear, modificar y eliminar las actividades.
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', marginRight: '0%', marginTop: '4%', marginBottom: '12%' }}>
+            <Button variant="outline-light" style={{ width: '380px', height: '85px', borderRadius: '20px', borderColor: '#003087', borderWidth: '2.5px', color: 'black', fontSize: '20px' }} onClick={handleOpenModal}>
+              Crear Actividad
+            </Button>{' '}
+            <div style={{ marginRight: '20px' }}></div> {/* Espacio */}
+            <Link to="/modulos"> {/* Agrega un enlace al botón */}
+              <Button variant="outline-light" style={{ width: '380px', height: '85px', borderRadius: '20px', borderColor: '#003087', borderWidth: '2.5px', color: 'black', fontSize: '20px' }}>
                 Modulos
               </Button>
             </Link>
-            </div>
-        <Row>
-          <Col xs={12} sm={6} md={6} lg={6}>
-            {/* Primera columna */}
-            <div className="demo-card demo-card--step1">
-              {/* Tarjeta 1 */}
-              <div className="head">
-                <div className="number-box">
-                  <span>01</span>
+          </div>
+          <Row>
+            {activities.map((activity, index) => (
+              <Col key={index} xs={12} sm={6} md={6} lg={6}>
+                <div className="demo-card demo-card--step" >
+                  <div className="head">
+                    <div className="number-box">
+                      <span>{index + 1}</span>
+                    </div>
+                    <h2>
+                      <span className="small">{activity.titulo}</span> {activity.descripcion}
+                    </h2>
+                  </div>
+                  <div className="body" style={{ marginTop: '30px' }}>
+                    <p style={{ textAlign: 'center', color: 'white' }}>
+                      {activity.contenido}
+                    </p>
+                    <div style={{ display: 'flex', justifyContent: 'flex-end', marginRight: '6%', marginTop: '7%', marginBottom: '3%' }}>
+                      <Button variant="outline-light" style={{ width: '120px', height: '40px' }} onClick={handleOpenModal}>
+                        Modificar
+                      </Button>{' '}
+                      <div style={{ marginRight: '10px' }}></div> {/* Espacio */}
+                      <Button variant="outline-light" style={{ width: '120px', height: '40px' }} onClick={() => {/* Tu función onClick personalizada */ }}>
+                        Eliminar
+                      </Button>{' '}
+                    </div>
+                    <img
+                      src="/foto11.png"
+                      alt="Tu imagen"
+                      className="demo-card img"
+                    />
+                  </div>
                 </div>
-                <h2>
-                  <span className="small">Actividad 1</span> Identificación
-                </h2>
-              </div>
-              
-              <div className="body" style={{marginTop: '30px'}}>
-                <p style={{textAlign:'center',color:'white'}}>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis
-                  deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
-                </p>
-                <div style={{ display: 'flex', justifyContent: 'flex-end' , marginRight: '6%', marginTop: '7%',marginBottom: '3%'}}>
-                <Button variant="outline-light" style={{width: '120px',  height: '40px',}} onClick={handleOpenModal}>
-                Modificar
-              </Button>{' '}
-              <div style={{ marginRight: '10px' }}></div> {/* Espacio */}
-                <Button variant="outline-light"   style={{width: '120px',  height: '40px',}}onClick={() => {/* Tu función onClick personalizada */}}>
-                Eliminar
-              </Button>{' '}
-            </div>
-            <img
-            src="/foto11.png"
-            alt="Tu imagen"
-            className="demo-card img"
-          />
-
-
-              </div>
-            </div>
-            <div className="demo-card demo-card--step2"> 
-              {/* Tarjeta 3 */}
-              <div className="head">
-                <div className="number-box">
-                  <span>03</span>
-                </div>
-                <h2>
-                  <span className="small">Actividad 3</span> Ideación
-                </h2>
-              </div>
-              <div className="body" style={{marginTop: '30px'}}>
-              <p style={{textAlign:'center',color:'white'}}>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis
-                  deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
-                </p>
-                <div style={{ display: 'flex', justifyContent: 'flex-end' , marginRight: '6%', marginTop: '7%',marginBottom: '3%'}}>
-                <Button variant="outline-light" style={{width: '120px',  height: '40px',}} onClick={handleOpenModal}>
-                Modificar
-              </Button>{' '}
-              <div style={{ marginRight: '10px' }}></div> {/* Espacio */}
-                <Button variant="outline-light"   style={{width: '120px',  height: '40px',}}onClick={() => {/* Tu función onClick personalizada */}}>
-                Eliminar
-              </Button>{' '}
-            </div>
-                <img src="http://placehold.it/1000x500" alt="Graphic" />
-              </div>
-            </div>
-          </Col>
-          <Col xs={12} sm={6} md={6} lg={6}>
-            {/* Segunda columna */}
-            <div className="demo-card demo-card--step3">
-              {/* Tarjeta 2 */}
-              <div className="head">
-                <div className="number-box">
-                  <span>02</span>
-                </div>
-                <h2>
-                  <span className="small">Actividad 2</span> Investigación
-                </h2>
-              </div>
-              <div className="body" style={{marginTop: '30px'}}>
-              <p style={{textAlign:'center',color:'white'}}>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis
-                  deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
-                </p>
-                <div style={{ display: 'flex', justifyContent: 'flex-end' , marginRight: '6%', marginTop: '7%',marginBottom: '3%'}}>
-                <Button variant="outline-light" style={{width: '120px',  height: '40px',}} onClick={handleOpenModal}>
-                Modificar
-              </Button>{' '}
-              <div style={{ marginRight: '10px' }}></div> {/* Espacio */}
-                <Button variant="outline-light"   style={{width: '120px',  height: '40px',}}onClick={() => {/* Tu función onClick personalizada */}}>
-                Eliminar
-              </Button>{' '}
-            </div>
-                <img src="http://placehold.it/1000x500" alt="Graphic" />
-              </div>
-            </div>
-            <div className="demo-card demo-card--step4">
-              {/* Tarjeta 4 */}
-              <div className="head">
-                <div className="number-box">
-                  <span>04</span>
-                </div>
-                <h2>
-                  <span className="small">Actividad 4</span> Socialización
-                </h2>
-              </div>
-              <div className="body" style={{marginTop: '30px'}}>
-              <p style={{textAlign:'center',color:'white'}}>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis
-                  deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
-                </p>
-                <div style={{ display: 'flex', justifyContent: 'flex-end' , marginRight: '6%', marginTop: '7%',marginBottom: '3%'}}>
-                <Button variant="outline-light" style={{width: '120px',  height: '40px',}} onClick={handleOpenModal}>
-                Modificar
-              </Button>{' '}
-              <div style={{ marginRight: '10px' }}></div> {/* Espacio */}
-                <Button variant="outline-light"   style={{width: '120px',  height: '40px',}}onClick={() => {/* Tu función onClick personalizada */}}>
-                Eliminar
-              </Button>{' '}
-            </div>
-                <img src="http://placehold.it/1000x500" alt="Graphic" />
-              </div>
-            </div>
-          </Col>
-        </Row>
-        <CustomModalA show={showModal} onClose={handleCloseModal}  />
-
-      </Container>
-    </section>
+              </Col>
+            ))}
+          </Row>
+          <CustomModalA show={showModal} onClose={handleCloseModal} />
+        </Container>
+      </section>
     </div>
   );
 }
 
 export default Gestion;
+
 
 
 
