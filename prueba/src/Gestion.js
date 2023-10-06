@@ -24,7 +24,7 @@ function Gestion() {
       console.log('Token de autorización:', localStorage.getItem('token')); // Agrega esta línea
       const response = await axios.get('/api/admin/activities/all/', {
         headers: {
-          'Authorization': `Bearer + token${localStorage.getItem('token')}`,
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
       });
   
@@ -38,7 +38,26 @@ function Gestion() {
       // Aquí puedes mostrar un mensaje de error al usuario o realizar otras acciones de manejo de errores.
     }
   };
-  
+
+  // Función para eliminar una actividad
+  const handleDeleteActivity = async (idActividad) => {
+    try {
+      const response = await axios.delete(`/api/admin/activities/${idActividad}/`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+
+      if (response.status === 200) {
+        // Elimina la actividad del estado para reflejar los cambios en la UI
+        const updatedActivities = activities.filter((activity) => activity.id_actividad !== idActividad);
+        setActivities(updatedActivities);
+      }
+    } catch (error) {
+      console.error('Error al eliminar la actividad:', error);
+      // Maneja el error, por ejemplo, mostrando un mensaje al usuario
+    }
+  };
 
   // Llama a la función para cargar las actividades cuando el componente se monta
   useEffect(() => {
@@ -68,7 +87,7 @@ function Gestion() {
           <Row>
             {activities.map((activity, index) => (
               <Col key={index} xs={12} sm={6} md={6} lg={6}>
-                <div className="demo-card demo-card--step" >
+                <div className="demo-card demo-card--step">
                   <div className="head">
                     <div className="number-box">
                       <span>{index + 1}</span>
@@ -86,7 +105,7 @@ function Gestion() {
                         Modificar
                       </Button>{' '}
                       <div style={{ marginRight: '10px' }}></div> {/* Espacio */}
-                      <Button variant="outline-light" style={{ width: '120px', height: '40px' }} onClick={() => {/* Tu función onClick personalizada */ }}>
+                      <Button variant="outline-light" style={{ width: '120px', height: '40px' }} onClick={() => handleDeleteActivity(activity.id_actividad)}> {/* Llama a la función de eliminación */}
                         Eliminar
                       </Button>{' '}
                     </div>
@@ -108,6 +127,7 @@ function Gestion() {
 }
 
 export default Gestion;
+
 
 
 
