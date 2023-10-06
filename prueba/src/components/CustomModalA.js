@@ -5,8 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { createActivity } from '../models/Activity';
 
 function CustomModalA(props) {
-  const { show, onHide, handleOpenModal } = props;
-  console.log(show);
+  const {show,onClose} = props;
 
   const [titulo, setTitulo] = useState(''); 
   const [descripcion, setDescripcion] = useState('');
@@ -26,7 +25,7 @@ function CustomModalA(props) {
 
   return (
     <>
-      <Modal size="lg" show={show} onHide={onHide}>
+      <Modal size="lg" show={show} onHide={onClose}>
         <Modal.Header closeButton>
           <Modal.Title>Crear Actividad</Modal.Title>
         </Modal.Header>
@@ -55,13 +54,12 @@ function CustomModalA(props) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={onHide}>
+          <Button variant="secondary" onClick={onClose}>
             Cerrar
           </Button>
           <Button variant="primary" onClick={() => {
             handleSubmit();
-            onHide();
-            handleOpenModal();
+            onClose();
           }}>
             Guardar
           </Button>

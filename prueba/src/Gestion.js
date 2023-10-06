@@ -14,6 +14,9 @@ function Gestion() {
   const handleOpenModal = () => {
     setShowModal(true);
   }
+  const handleCloseModal = () => {
+    setShowModal(false);
+  }
 
   
   return (
@@ -27,7 +30,7 @@ function Gestion() {
           En esta sección podras crear, modificar y eliminar las actividades.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center' , marginRight: '0%', marginTop: '4%',marginBottom: '12%'}}>
-                <Button variant="outline-light" style={{width: '380px',  height: '85px', borderRadius: '20px',borderColor: '#003087',borderWidth: '2.5px',color: 'black' ,fontSize: '20px',}} onClick={() => {/* Tu función onClick personalizada */}}>
+                <Button variant="outline-light" style={{width: '380px',  height: '85px', borderRadius: '20px',borderColor: '#003087',borderWidth: '2.5px',color: 'black' ,fontSize: '20px',}} onClick={handleOpenModal}>
                 Crear Actividad
               </Button>{' '}
               <div style={{ marginRight: '20px' }}></div> {/* Espacio */} 
@@ -160,7 +163,7 @@ function Gestion() {
             </div>
           </Col>
         </Row>
-        <CustomModalA show={showModal} onHide={() => setShowModal(false)} handleOpenModal={handleOpenModal} />
+        <CustomModalA show={showModal} onClose={handleCloseModal}  />
 
       </Container>
     </section>
