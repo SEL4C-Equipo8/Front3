@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Modulos.css';
+import CustomModal from './components/CustomModal'
+
 
 const YourComponent = () => {
   const boxesData = [
@@ -49,91 +51,53 @@ const YourComponent = () => {
     },
   ];
 
-  const [expandedBoxIndex, setExpandedBoxIndex] = useState(-1);
 
-  const openBox = (index) => {
-    setExpandedBoxIndex(index);
+  const [showModal, setShowModal] = useState(false); // Nuevo estado para controlar la visibilidad del modal
+
+  const handleOpenModal = () => {
+    setShowModal(true);
   };
 
-  const closeBox = () => {
-    setExpandedBoxIndex(-1);
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
-
-  const groupedBoxes = [];
-  for (let i = 0; i < boxesData.length; i += 3) {
-    groupedBoxes.push(boxesData.slice(i, i + 3));
-  }
 
   return (
     <Container>
-<h1 style={{ textAlign: 'center' }}>Módulos - Actividades</h1>
-      {groupedBoxes.map((group, groupIndex) => (
-        <Card key={groupIndex}>
-          <Card.Header>
-            <h2>Módulos de la actividad {groupIndex + 1}</h2>
-            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <Button variant="outline-secondary">Crear Módulo</Button>
-            </div>
-          </Card.Header>
-          <Card.Body>
-            <Row>
-              {group.map((box, index) => (
-                <Col key={index} xs={12} sm={6} md={4}>
-                  <div className="expandable-box-container">
-                    <Card
-                      className={`expandable-box ${expandedBoxIndex === groupIndex * 3 + index ? 'full-screen' : ''}`}
-                    >
-                      {expandedBoxIndex === groupIndex * 3 + index && (
-                        <div className="close-button-container">
-                          <Button
-                            className="close-button"
-                            variant="outline-secondary"
-                            onClick={closeBox}
-                          >
-                            Cerrar
-                          </Button>
-                        </div>
-                      )}
-                      <Card.Body>
-                        {expandedBoxIndex === groupIndex * 3 + index ? (
-                          <div>
-                            {box.expandedContent}
-                            <Button variant="outline-secondary">Eliminar</Button>
-                          </div>
-                        ) : (
-                          <div>
-                            <Card.Title>{box.title}</Card.Title>
-                          
-                            <Button
-                              variant="outline-secondary"
-                              onClick={() => openBox(groupIndex * 3 + index)}
-                            >
-                              Modificar
-                            </Button>
-
-                            <Button
-                              variant="outline-secondary"
-                              onClick={() => openBox(groupIndex * 3 + index)}
-                            >
-                              Eliminar
-                            </Button>
-                          </div>
-                        )}
-                      </Card.Body>
-                    </Card>
-                  </div>
-                </Col>
-              ))}
-            </Row>
-          </Card.Body>
-        </Card>
+      <h1 style={{ textAlign: 'center' }}>Módulos - Actividades</h1>
+      <Button variant="primary" onClick={handleOpenModal}>
+        Crear Módulo
+      </Button>
+      {boxesData.map((box, index) => (
+        <Col key={index} xs={12} sm={6} md={4}>
+          <div className="box-container">
+            <Card>
+              <Card.Body>
+                <Card.Title>{box.title}</Card.Title>
+                <Button
+                  variant="outline-secondary"
+                  onClick={() => handleOpenModal()}
+                >
+                  Modificar
+                </Button>
+                <Button
+                  variant="outline-secondary"
+                  onClick={() => {}}
+                >
+                  Eliminar
+                </Button>
+              </Card.Body>
+            </Card>
+          </div>
+        </Col>
       ))}
+      {/* Renderizar el modal */}
+      <CustomModal show={showModal} onHide={handleCloseModal} />
     </Container>
   );
 };
 
 export default YourComponent;
-
 
 
 
