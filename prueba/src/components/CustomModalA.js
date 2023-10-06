@@ -1,33 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import { createActivity } from '../models/Activity';
+import { createActivity, editActivity } from '../models/Activity';
 
 function CustomModalA(props) {
-  const {show,onClose} = props;
+  const { show, onClose, mode, activityToEdit } = props;
 
-  const [titulo, setTitulo] = useState(''); 
+  const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [message, setMessage] = useState('');
+  const [activityId, setActivityId] = useState(null);
 
-  const handleSubmit = async () => {
+  useEffect(() => {
+    if (mode === 'edit' && activityToEdit) {
+      setTitulo(activityToEdit.titulo);
+      setDescripcion(activityToEdit.descripcion);
+      setActivityId(activityToEdit.id_actividad);
+    } else {
+      setTitulo('');
+      setDescripcion('');
+      setActivityId(null);
+    }
+  }, [mode, activityToEdit]);
+
+  const handleCreateActivity = async () => {
     const result = await createActivity(titulo, descripcion);
 
     if (result.success) {
       setMessage(result.message);
-      // Puedes realizar otras acciones después de la creación exitosa
+      // Realiza acciones después de la creación exitosa
       // Por ejemplo, cerrar el modal o actualizar la lista de actividades
+      onClose(); // Cierra el modal al hacer clic en "Crear"
     } else {
       setMessage(result.message);
     }
-  }
+  };
+
+  const handleEditActivity = async () => {
+    if (activityId) {
+      const result = await editActivity(activityId, titulo, descripcion);
+
+      if (result.success) {
+        setMessage(result.message);
+        // Realiza acciones después de la edición exitosa
+        // Por ejemplo, cerrar el modal o actualizar la lista de actividades
+        onClose(); // Cierra el modal al hacer clic en "Guardar Cambios"
+      } else {
+        setMessage(result.message);
+      }
+    }
+  };
 
   return (
     <>
       <Modal size="lg" show={show} onHide={onClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Crear Actividad</Modal.Title>
+          <Modal.Title>{mode === 'edit' ? 'Editar Actividad' : 'Crear Actividad'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -57,12 +86,17 @@ function CustomModalA(props) {
           <Button variant="secondary" onClick={onClose}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={() => {
-            handleSubmit();
-            onClose();
-          }}>
-            Guardar
-          </Button>
+          {mode === 'edit' ? (
+            // Botón para editar una actividad existente
+            <Button variant="primary" onClick={handleEditActivity}>
+              Guardar Cambios
+            </Button>
+          ) : (
+            // Botón para crear una nueva actividad
+            <Button variant="primary" onClick={handleCreateActivity}>
+              Crear
+            </Button>
+          )}
         </Modal.Footer>
       </Modal>
     </>
@@ -70,3 +104,8 @@ function CustomModalA(props) {
 }
 
 export default CustomModalA;
+
+
+
+
+

@@ -10,7 +10,13 @@ function Gestion() {
   const [showModal, setShowModal] = useState(false);
   const [activities, setActivities] = useState([]); // Agrega un estado para almacenar las actividades
 
-  const handleOpenModal = () => {
+  const [mode, setMode] = useState('create'); // Inicialmente en modo "crear"
+  const [activityToEdit, setActivityToEdit] = useState(null);
+
+
+  const handleOpenModal = (mode, activityToEdit) => {
+    setMode(mode);
+    setActivityToEdit(activityToEdit);
     setShowModal(true);
   }
 
@@ -101,9 +107,9 @@ function Gestion() {
                       {activity.contenido}
                     </p>
                     <div style={{ display: 'flex', justifyContent: 'flex-end', marginRight: '6%', marginTop: '7%', marginBottom: '3%' }}>
-                      <Button variant="outline-light" style={{ width: '120px', height: '40px' }} onClick={handleOpenModal}>
-                        Modificar
-                      </Button>{' '}
+                    <Button variant="outline-light" style={{ width: '120px', height: '40px' }} onClick={() => handleOpenModal('edit', activity)}>
+                      Modificar
+                    </Button>{' '}
                       <div style={{ marginRight: '10px' }}></div> {/* Espacio */}
                       <Button variant="outline-light" style={{ width: '120px', height: '40px' }} onClick={() => handleDeleteActivity(activity.id_actividad)}> {/* Llama a la función de eliminación */}
                         Eliminar
@@ -120,6 +126,7 @@ function Gestion() {
             ))}
           </Row>
           <CustomModalA show={showModal} onClose={handleCloseModal} />
+          <CustomModalA show={showModal} onClose={handleCloseModal} mode={mode} activityToEdit={activityToEdit} />
         </Container>
       </section>
     </div>

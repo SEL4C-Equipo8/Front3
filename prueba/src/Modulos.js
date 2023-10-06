@@ -103,11 +103,19 @@ const YourComponent = () => {
                         ) : (
                           <div>
                             <Card.Title>{box.title}</Card.Title>
+                          
                             <Button
                               variant="outline-secondary"
                               onClick={() => openBox(groupIndex * 3 + index)}
                             >
                               Modificar
+                            </Button>
+
+                            <Button
+                              variant="outline-secondary"
+                              onClick={() => openBox(groupIndex * 3 + index)}
+                            >
+                              Eliminar
                             </Button>
                           </div>
                         )}
