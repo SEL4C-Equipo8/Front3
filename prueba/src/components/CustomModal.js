@@ -16,11 +16,7 @@ function CustomModal(props) {
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Título</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Reflexión Inicial"
-                autoFocus
-              />
+              <Form.Control type="text" placeholder="Reflexión Inicial" autoFocus />
             </Form.Group>
 
             {/* Campo para imágenes */}
@@ -58,4 +54,5 @@ function CustomModal(props) {
 }
 
 export default CustomModal;
+
 
