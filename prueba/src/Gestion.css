@@ -8,6 +8,8 @@
   border-bottom: 1px solid rgba(191, 191, 191, 0.4);
 }
 
+
+
 #timeline h1 {
   text-align: center;
   font-size: 3rem;
@@ -23,20 +25,21 @@
 }
 
 /* Estilos para las tarjetas */
-.demo-card {
-  position: relative;
-  display: block;
-  margin: 10px auto 100px;
-  max-width: 100%;
-  z-index: 2;
-  opacity: 1; /* Establece la opacidad inicial */
-  transform: scale(1); /* Establece el tamaño inicial */
+
+
+.button-active {
+  background-color: black !important;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4) !important;
+  color: white !important;
 }
 
 .demo-card img {
-  display: block;
-  width: 100%;
+  max-width: 'auto'; /* Mantén el ancho automático */
+  max-height: 'auto'; /* Ajusta la altura máxima aquí (píxeles o porcentaje) */
+  background-color: #DFE0DA;
+  transition: none !important;
 }
+
 
 .demo-card .head {
   position: relative;
@@ -75,20 +78,23 @@
 
 /* Estilos para diferentes tarjetas */
 .demo-card--step1 {
-  background-color: #46b8e9;
+  background-color: #003087;
 }
 
 .demo-card--step2 {
-  background-color: #483D8B;
+  background-color: #003087;
 }
 
 .demo-card--step3 {
-  background-color: #CD853F;
+  background-color: #003087;
 }
 
 .demo-card--step4 {
-  background-color: #4d92eb;
+  background-color: #003087;
 }
+
+
+
 
 /* Efectos de transición para las tarjetas */
 .demo-card {
@@ -104,10 +110,15 @@
 
 .demo-card:hover {
   transform: scale(1.05); /* Agranda la tarjeta al pasar el mouse */
-  background-color: #3ee9d1; /* Cambia el color de fondo al pasar el mouse */
+  background-color: #6D8DA1; /* Cambia el color de fondo al pasar el mouse */
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4); /* Agrega una sombra al pasar el mouse */
 }
 
-  
+.demo-card img:hover {
+  transition: none !important;
+  background-color:#DFE0DA !important;
+  transform: none !important;
+}
+
   /* Agrega más estilos para otras tarjetas si es necesario */
   

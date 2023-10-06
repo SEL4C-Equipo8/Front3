@@ -9,8 +9,6 @@ import { Link } from 'react-router-dom'; // Importa el componente Link
 import CustomModalA from './components/CustomModalA';
 
 
-
-
 function Gestion() {
   const [showModal, setShowModal] = useState(false);
   const handleOpenModal = () => {
@@ -21,20 +19,20 @@ function Gestion() {
   return (
     <div>
       <Header></Header>
-    <section id="timeline" style={{backgroundColor: '#F5F5F5'}}>
+      <section id="timeline" style={{backgroundColor: '#DFE0DA'}}>
       <Container >
     
-      <h1 style={{ fontWeight: '500' }}>Actividades</h1>
-        <p className="leader">
-          All cards must be the same height and width for space calculations on large screens.
+      <h1 style={{ fontWeight: '500',fontSize:'350%' ,marginTop:'0px',marginBottom:'40px'}}>Actividades</h1>
+        <p className="leader" style={{ fontWeight: '400',fontSize:'140%',marginBottom:'45px' }}>
+          En esta sección podras crear, modificar y eliminar las actividades.
         </p>
-        <div style={{ display: 'flex', justifyContent: 'center' , marginRight: '0%', marginTop: '4%',marginBottom: '6%'}}>
-                <Button variant="outline-secondary" style={{width: '380px',  height: '100px',}} onClick={() => {/* Tu función onClick personalizada */}}>
+        <div style={{ display: 'flex', justifyContent: 'center' , marginRight: '0%', marginTop: '4%',marginBottom: '12%'}}>
+                <Button variant="outline-light" style={{width: '380px',  height: '85px', borderRadius: '20px',borderColor: '#003087',borderWidth: '2.5px',color: 'black' ,fontSize: '20px',}} onClick={() => {/* Tu función onClick personalizada */}}>
                 Crear Actividad
               </Button>{' '}
               <div style={{ marginRight: '20px' }}></div> {/* Espacio */} 
               <Link to="/modulos"> {/* Agrega un enlace al botón */}
-              <Button variant="outline-secondary" style={{ width: '380px', height: '100px' }}>
+              <Button variant="outline-light" style={{ width: '380px', height: '85px',borderRadius: '20px',borderColor: '#003087',borderWidth: '2.5px',color: 'black', fontSize: '20px' }}>
                 Modulos
               </Button>
             </Link>
@@ -54,7 +52,7 @@ function Gestion() {
               </div>
               
               <div className="body" style={{marginTop: '30px'}}>
-                <p style={{textAlign:'center'}}>
+                <p style={{textAlign:'center',color:'white'}}>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis
                   deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
                 </p>
@@ -67,7 +65,13 @@ function Gestion() {
                 Eliminar
               </Button>{' '}
             </div>
-                <img src="http://placehold.it/1000x500" alt="Graphic" />
+            <img
+            src="/foto11.png"
+            alt="Tu imagen"
+            className="demo-card img"
+          />
+
+
               </div>
             </div>
             <div className="demo-card demo-card--step2"> 
@@ -81,7 +85,7 @@ function Gestion() {
                 </h2>
               </div>
               <div className="body" style={{marginTop: '30px'}}>
-              <p style={{textAlign:'center'}}>
+              <p style={{textAlign:'center',color:'white'}}>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis
                   deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
                 </p>
@@ -111,7 +115,7 @@ function Gestion() {
                 </h2>
               </div>
               <div className="body" style={{marginTop: '30px'}}>
-              <p style={{textAlign:'center'}}>
+              <p style={{textAlign:'center',color:'white'}}>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis
                   deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
                 </p>
@@ -138,7 +142,7 @@ function Gestion() {
                 </h2>
               </div>
               <div className="body" style={{marginTop: '30px'}}>
-              <p style={{textAlign:'center'}}>
+              <p style={{textAlign:'center',color:'white'}}>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis
                   deserunt doloribus consequatur, laudantium odio dolorum laboriosam.
                 </p>
@@ -165,6 +169,8 @@ function Gestion() {
 }
 
 export default Gestion;
+
+
 
 
 
