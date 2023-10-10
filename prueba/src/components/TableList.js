@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles.css'; // Importa el archivo CSS
 
 function TableList() {
   const data = [
@@ -8,7 +9,7 @@ function TableList() {
       email: 'usuario1@example.com',
       grado_ac: 'Licenciatura',
       genero: 'Femenino',
-      edad: 25,
+      edad: 35,
       pais: 'México',
       institucion: 'Universidad A',
     },
@@ -23,11 +24,12 @@ function TableList() {
     },
     // Agrega más datos aquí
   ];
+  
   return (
     <div className="container mt-4">
-      <h2>Tabla de Datos</h2>
-      <table className="table table-bordered">
-        <thead>
+      <h2>Tabla de Usuarios</h2>
+      <table className="custom-table"> {/* Agrega la clase custom-table aquí */}
+        <thead className="thead-dark">
           <tr>
             <th>Username</th>
             <th>Email</th>
@@ -50,8 +52,7 @@ function TableList() {
               <td>{item.pais}</td>
               <td>{item.institucion}</td>
               <td>
-                {/* Agrega aquí el enlace o botón para las gráficas */}
-                <button className="btn btn-primary">Ver Gráficas</button>
+                <a href="/graficas" className="btn-custom">Ver Gráficas</a>
               </td>
             </tr>
           ))}
@@ -60,4 +61,5 @@ function TableList() {
     </div>
   );
 }
+
 export default TableList;

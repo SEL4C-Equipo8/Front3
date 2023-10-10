@@ -14,7 +14,7 @@ function Footer() {
           </Col>
           <Col>
             <div>
-              <img src="../public/apple.png" alt="Imagen" className="img-fluid" />
+              <img src="appleDownload.png" alt="Imagen" className="img-fluid" />
             </div>
           </Col>
         </Row>

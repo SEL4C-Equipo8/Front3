@@ -26,9 +26,9 @@ function CustomModal(props) {
             </Form.Group>
 
             {/* Campo para archivos multimedia */}
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
-              <Form.Label>Archivos Multimedia</Form.Label>
-              <Form.Control type="file" accept="audio/*,video/*" multiple />
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Tipo de archivo multimedia</Form.Label>
+              <Form.Control type="text" placeholder="Reflexión Inicial" autoFocus />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
@@ -54,5 +54,3 @@ function CustomModal(props) {
 }
 
 export default CustomModal;
-
-

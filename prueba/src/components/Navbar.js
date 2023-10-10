@@ -28,11 +28,11 @@ function Navbar({ Toggle }) {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Yousof
+              SEL4C
             </a>
             <div className="dropdown-menu" aria-labelledby="dropdownId">
-              <a className="dropdown-item" href="#">Profile </a>
-              <a className="dropdown-item" href="#">Setting</a>
+              <a className="dropdown-item" href="/">Home </a>
+              <a className="dropdown-item" href="/gestion">Gestión</a>
               <a className="dropdown-item" href="#">Logout </a>
             </div>
           </li>

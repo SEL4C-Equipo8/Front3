@@ -53,17 +53,19 @@ function Gestion() {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
       });
-
+  
       if (response.status === 200) {
-        // Elimina la actividad del estado para reflejar los cambios en la UI
+        alert('Se ha eliminado la actividad');
         const updatedActivities = activities.filter((activity) => activity.id_actividad !== idActividad);
         setActivities(updatedActivities);
+      } else {
+        alert('No se ha podido eliminar la actividad');
       }
     } catch (error) {
       console.error('Error al eliminar la actividad:', error);
-      // Maneja el error, por ejemplo, mostrando un mensaje al usuario
     }
   };
+  
 
   // Llama a la función para cargar las actividades cuando el componente se monta
   useEffect(() => {
@@ -134,7 +136,6 @@ function Gestion() {
 }
 
 export default Gestion;
-
 
 
 

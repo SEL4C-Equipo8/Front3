@@ -1,0 +1,60 @@
+/* Home.css */
+
+.home-container {
+    padding: 8px;
+    margin-left: 0%;
+    background-color: #e2e2e2;
+  }
+
+  .home-card-title {
+    font-size: 1.5rem;
+  }
+  
+  
+  .home-card {
+    background-color: white; /* Cambia el fondo a blanco */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 10px;
+    width: 90%; /* Cambia el ancho */
+    max-width: 400px; /* Cambia el ancho máximo */
+    height: 90%; /* Cambia la altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    border-top: 4px solid rgb(0, 191, 255); /* Borde superior de color rojo */
+    border-right: 4px solid rgb(30, 30, 195); /* Borde derecho de color azul */
+    border-bottom: 4px solid green; /* Borde inferior de color verde */
+    border-left: 4px solid orange; /* Borde izquierdo de color naranja */
+  }
+
+  .home-card2 {
+    background-color: white; /* Cambia el fondo a blanco */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 10px;
+    width: 90%; /* Cambia el ancho */
+    max-width: 400px; /* Cambia el ancho máximo */
+    height: 90%; /* Cambia la altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    
+  }
+  
+
+ 
+  .chart-container {
+    background-color: none;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  

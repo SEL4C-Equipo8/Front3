@@ -26,31 +26,32 @@ function CustomModalA(props) {
 
   const handleCreateActivity = async () => {
     const result = await createActivity(titulo, descripcion);
-
+  
     if (result.success) {
-      setMessage(result.message);
-      // Realiza acciones después de la creación exitosa
-      // Por ejemplo, cerrar el modal o actualizar la lista de actividades
-      onClose(); // Cierra el modal al hacer clic en "Crear"
+      alert('Se ha creado la actividad');
+      setMessage('');
+      onClose();
     } else {
+      alert('No se ha podido crear la actividad');
       setMessage(result.message);
     }
   };
-
+  
   const handleEditActivity = async () => {
     if (activityId) {
       const result = await editActivity(activityId, titulo, descripcion);
-
+  
       if (result.success) {
-        setMessage(result.message);
-        // Realiza acciones después de la edición exitosa
-        // Por ejemplo, cerrar el modal o actualizar la lista de actividades
-        onClose(); // Cierra el modal al hacer clic en "Guardar Cambios"
+        alert('Se ha modificado la actividad');
+        setMessage('');
+        onClose();
       } else {
+        alert('No se ha podido modificar la actividad');
         setMessage(result.message);
       }
     }
   };
+  
 
   return (
     <>
@@ -104,7 +105,6 @@ function CustomModalA(props) {
 }
 
 export default CustomModalA;
-
 
 
 

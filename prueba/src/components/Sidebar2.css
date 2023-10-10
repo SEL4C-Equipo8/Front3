@@ -1,0 +1,70 @@
+/* Sidebar2.css */
+
+/* Estilos generales del sidebar */
+.sidebar {
+    width: 295px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #003087;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos del encabezado */
+  .sidebar-header {
+    text-align: left;
+    margin-top: 45px;
+    margin-bottom: 0px;
+  }
+  
+  .brand-name {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 35px !important;
+  }
+  
+  /* Estilos de la división */
+  .sidebar-divider {
+    border-top: 8px solid #fdfdfd;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos del menú */
+  .sidebar-menu {
+    padding: 0;
+    list-style: none;
+  }
+  
+  /* Estilos de los ítems del menú */
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sidebar-item:hover {
+    background-color: #999999;
+  }
+  
+  /* Estilos de los iconos */
+  .sidebar-item i {
+    margin-right: 10px;
+    font-size: 1.55rem !important;
+  }
+  
+  /* Estilos del texto del ítem del menú */
+  .sidebar-item span {
+    font-size: 1.35rem !important;
+  }
+  
+  /* Estilos del enlace en los ítems del menú */
+  .sidebar-item a {
+    text-decoration: none;
+    color: inherit;
+  }
+  

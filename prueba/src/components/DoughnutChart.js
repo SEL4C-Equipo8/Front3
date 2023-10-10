@@ -1,13 +1,12 @@
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Chart } from 'chart.js/auto';
+import { Doughnut } from 'react-chartjs-2';
 
-function BarChart() {
+function DoughnutChart() {
   const data = {
     labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
     datasets: [
       {
-        label: 'Ventas Mensuales',
+        label: 'Activiades',
         backgroundColor: ['rgba(75,192,192,0.4)', 'rgba(255,99,132,0.4)', 'rgba(255,206,86,0.4)', 'rgba(54,162,235,0.4)', 'rgba(153,102,255,0.4)'],
         borderColor: ['rgba(75,192,192,1)', 'rgba(255,99,132,1)', 'rgba(255,206,86,1)', 'rgba(54,162,235,1)', 'rgba(153,102,255,1)'],
         borderWidth: 1,
@@ -21,45 +20,23 @@ function BarChart() {
   const options = {
     maintainAspectRatio: false,
     responsive: true,
-    scales: {
-      x: {
-        type: 'category', // Configurar la escala como 'category' para las etiquetas
-      },
-    },
     plugins: {
       title: {
         display: true,
-        text: 'Actividades', // Aquí estableces el título
-        position: 'top', // Puedes ajustar la posición: 'top', 'bottom', 'left', 'right'
+        text: 'Ventas Mensuales',
+        position: 'top',
       },
     },
   };
 
   return (
     <div className="home-card" style={{ width: '90%', maxWidth: '400px', height: 'auto', padding: '20px', margin: '10px', backgroundColor: 'white' }}>
-      <h3>Evalución Inicial</h3>
+      <h3>Actividades</h3>
       <div style={{ backgroundColor: 'white', padding: '20px' }}>
-        <Bar data={data} options={options} />
+        <Doughnut data={data} options={options} />
       </div>
     </div>
   );
 }
 
-export default BarChart;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default DoughnutChart;

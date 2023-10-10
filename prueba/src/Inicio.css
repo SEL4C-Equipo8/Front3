@@ -28,3 +28,20 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, .navbar, .carousel-caption, .card-ti
   padding: 20px;
   z-index: 1;
 }
+
+
+.img-fluid{
+  width: 400px;
+}
+
+
+.img-fluid2{
+  margin-top: 25px;
+  width: 400px;
+}
+
+.img-fluidd{
+  width: 1200px;
+
+
+}
