@@ -9,7 +9,7 @@ function CustomModalA(props) {
 
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
-  const [message, setMessage] = useState('');
+  const [, setMessage] = useState('');
   const [activityId, setActivityId] = useState(null);
 
   useEffect(() => {

@@ -128,44 +128,36 @@ function Inicio() {
 
 
         <div style={{ marginTop: '90px', marginBottom: '90px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#DCDCDC' }}>
-        <Row>
+          <Row>
             <Col style={{ margin: '70px' }}>
-            <Card style={{ width: '18rem', border: '12px solid #A3A4A5', borderRadius: '15px', backgroundColor: '#A3A4A5' ,maxHeight: '400px',}}>
-                <Card.Img variant="top" src="foto8.jpeg" />
-                <Card.Body>
-                <Card.Title style={{ backgroundColor: '#A3A4A5', color: 'white', textAlign: 'center' }}>
-                Metodología SEL4C
-                </Card.Title>
-                </Card.Body>
-            </Card>
+                <Card style={{ width: '18rem', border: '12px solid #A3A4A5', borderRadius: '15px', backgroundColor: '#A3A4A5', maxHeight: '400px' }}>
+                    <Card.Img variant="top" src="foto8.jpeg" />
+                    <Card.Title style={{ color: 'white', textAlign: 'center', fontSize: '1.4rem', padding: '0px' }}>
+                        Metodología SEL4C
+                    </Card.Title>
+                </Card>
             </Col>
 
             <Col style={{ margin: '70px' }}>
-            <Card style={{ width: '18rem', border: '12px solid #A3A4A5', borderRadius: '15px', backgroundColor: '#A3A4A5',maxHeight: '400px',  }}>
-                <Card.Img variant="top" src="foto9.jpeg" />
-                <Card.Body>
-                <Card.Title style={{ backgroundColor: '#A3A4A5', color: 'white', textAlign: 'center' }}>
-                Generar Valor
-                </Card.Title>
-                </Card.Body>
-            </Card>
+                <Card style={{ width: '18rem', border: '12px solid #A3A4A5', borderRadius: '15px', backgroundColor: '#A3A4A5', maxHeight: '400px' }}>
+                    <Card.Img variant="top" src="foto9.jpeg" />
+                    <Card.Title style={{ color: 'white', textAlign: 'center', fontSize: '1.4rem', padding: '0px' }}>
+                        Generar Valor
+                    </Card.Title>
+                </Card>
             </Col>
 
             <Col style={{ margin: '70px' }}>
-            <Card style={{ width: '18rem', border: '12px solid #A3A4A5', borderRadius: '15px', backgroundColor: '#A3A4A5',maxHeight: '400px' , }}>
-                <Card.Img variant="top" src="foto7.jpeg" />
-                <Card.Body>
-                <Card.Title style={{ backgroundColor: '#A3A4A5', color: 'white', textAlign: 'center' }}>
-                  Emprendimiento Socia</Card.Title>
-                </Card.Body>
-            </Card>
+                <Card style={{ width: '18rem', border: '12px solid #A3A4A5', borderRadius: '15px', backgroundColor: '#A3A4A5', maxHeight: '400px' }}>
+                    <Card.Img variant="top" src="foto7.jpeg" />
+                    <Card.Title style={{ color: 'white', textAlign: 'center', fontSize: '1.4rem', padding: '0px',marginTop: '30px' }}>
+                        Emprendimiento Social
+                    </Card.Title>
+                </Card>
             </Col>
         </Row>
         </div>
 
-
-
-          
 
  <div style={{ marginTop: '150px', marginBottom: '150px', backgroundColor: '#789CEA', minHeight: '500px' }}>
       <Row>

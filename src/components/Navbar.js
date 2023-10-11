@@ -22,7 +22,7 @@ function Navbar({ Toggle }) {
           <li className="nav-item dropdown">
             <a
               className="nav-link dropdown-toggle text-white"
-              href="#"
+              href="/"
               id="dropdownId"
               data-bs-toggle="dropdown"
               aria-haspopup="true"
@@ -33,7 +33,7 @@ function Navbar({ Toggle }) {
             <div className="dropdown-menu" aria-labelledby="dropdownId">
               <a className="dropdown-item" href="/">Home </a>
               <a className="dropdown-item" href="/gestion">Gestión</a>
-              <a className="dropdown-item" href="#">Logout </a>
+              <a className="dropdown-item" href="/">Logout </a>
             </div>
           </li>
         </ul>

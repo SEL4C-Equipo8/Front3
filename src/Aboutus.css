@@ -1,0 +1,78 @@
+/* Aboutus.css */
+
+.aboutus-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.aboutus-card {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  
+    
+}
+
+.aboutus-card:hover {
+    transform: scale(1.03);
+}
+
+.fade-in {
+    animation-name: fadeIn;
+    animation-duration: 1.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Estilos para las imágenes */
+img {
+    border-radius: 15px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilos generales para ajustar la apariencia */
+
+
+.aboutus-card {
+    background-color: #ffffff;
+}
+
+/* Aboutus.css */
+
+/* ... (otros estilos que ya tenías) ... */
+
+/* Centrar el h1 */
+h1.aboutus {
+    text-align: center;
+    padding: 30px 0;
+    font-weight: 500;
+    font-size: 350%;
+}
+
+/* Estilo general para Card.Title */
+.card-title {
+    margin-top: 30px;  /* Ajusta según tu preferencia */
+}
+
+/* Estilo específico para alternar alineación */
+.card:nth-child(odd) .card-title {
+    text-align: right;
+    padding-right: 50px; /* Ajusta este valor según tu preferencia */
+
+}
+
+.card:nth-child(even) .card-title {
+    text-align: left;
+    padding-left: 50px; /* Ajusta este valor según tu preferencia */
+
+}

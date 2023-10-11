@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react';
 
 
 function CustomModal(props) {
-  const { show, onHide, handleOpenModal, idActividad } = props;
-  const [apiContent, setApiContent] = useState(""); 
+  const { show, onHide, idActividad } = props;
+  const [, setApiContent] = useState(""); 
 
   useEffect(() => {
     if (show) {

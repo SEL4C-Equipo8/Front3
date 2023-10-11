@@ -4,6 +4,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Home from './components/Home';
 import Sidebar2 from './components/Sidebar2';
 
+
 function Dashboard() {
   const [toggle, setToggle] = useState(true);
   const Toggle = () => {

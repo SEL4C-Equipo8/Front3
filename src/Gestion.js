@@ -68,8 +68,9 @@ function Gestion() {
   
 
   // Llama a la función para cargar las actividades cuando el componente se monta
+  
   useEffect(() => {
-    loadActivities();
+    loadActivities(); // Llamada inicial // Limpiar el intervalo cuando el componente se desmonte
   }, []);
 
   return (
