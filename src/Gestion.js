@@ -56,10 +56,12 @@ function Gestion() {
   
       if (response.status === 200) {
         alert('Se ha eliminado la actividad');
+        window.location.reload();
         const updatedActivities = activities.filter((activity) => activity.id_actividad !== idActividad);
         setActivities(updatedActivities);
       } else {
         alert('No se ha podido eliminar la actividad');
+        window.location.reload();
       }
     } catch (error) {
       console.error('Error al eliminar la actividad:', error);
