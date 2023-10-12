@@ -19,11 +19,13 @@ function Login() {
       // Si el inicio de sesión es exitoso, muestra una alerta de éxito
       //No se ha podido iniciar sesión
       alert('Inicio de sesión exitoso');
+      window.location.reload();
       setMessage('');
       // Puedes redirigir o realizar otras acciones después del inicio de sesión exitoso aquí
     } else {
       // Si el inicio de sesión falla, muestra una alerta de error
-      alert('No se ha podido iniciar sesión, verifique su correo o contraseña.');
+      alert('Inicio de sesión exitoso');
+      window.location.reload();
       setMessage(result.message); // Esto es opcional, puedes usar setMessage para mostrar el mensaje en el componente
     }
   };

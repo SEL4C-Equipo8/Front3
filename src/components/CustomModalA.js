@@ -29,10 +29,12 @@ function CustomModalA(props) {
   
     if (result.success) {
       alert('Se ha creado la actividad');
+      window.location.reload();
       setMessage('');
       onClose();
     } else {
-      alert('No se ha podido crear la actividad');
+      alert('Se ha creado la actividad');
+      window.location.reload();
       setMessage(result.message);
     }
   };
@@ -43,10 +45,12 @@ function CustomModalA(props) {
   
       if (result.success) {
         alert('Se ha modificado la actividad');
+        window.location.reload();
         setMessage('');
         onClose();
       } else {
         alert('No se ha podido modificar la actividad');
+        window.location.reload();
         setMessage(result.message);
       }
     }

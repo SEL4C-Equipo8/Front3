@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from './Navbar';
 import './Home.css'; // Crear un archivo Home.css para definir estilos personalizados
-import Graficas from './Graficas';
+import TableList from './TableList';
 
 function Home({ Toggle }) {
   return (
@@ -33,7 +33,7 @@ function Home({ Toggle }) {
       </div>
 
       <div className='chart-container'>
-        <Graficas />
+        <TableList />
 
       </div>
     </div>
