@@ -31,9 +31,7 @@ function Gestion() {
       const url = `${BASE_URL}/api/admin/activities/all/`;
       console.log('Token de autorización:', localStorage.getItem('token')); // Agrega esta línea
       const response = await axios.get(url, {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        },
+        
       });
   
       console.log('Respuesta de Axios:', response); // Agrega esta línea
