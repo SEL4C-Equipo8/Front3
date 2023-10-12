@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://54.205.255.125'; // Reemplaza esto con la URL de tu servidor Django
+const BASE_URL = 'http://54.205.255.125:8000'; // Reemplaza esto con la URL de tu servidor Django
 
 export async function loginUser(email, contrasena) {
   const url = `${BASE_URL}/authentication/login/`; // Asegúrate de que la URL sea la correcta
