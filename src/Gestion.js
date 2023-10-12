@@ -25,13 +25,13 @@ function Gestion() {
   }
 
   // Función para cargar las actividades desde el servidor
+  const BASE_URL = 'http://54.205.255.125:8000';
   const loadActivities = async () => {
     try {
+      const url = `${BASE_URL}/api/admin/activities/all/`;
       console.log('Token de autorización:', localStorage.getItem('token')); // Agrega esta línea
-      const response = await axios.get('/api/admin/activities/all/', {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        },
+      const response = await axios.get(url, {
+        
       });
   
       console.log('Respuesta de Axios:', response); // Agrega esta línea

@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import ChartModal from './ChartModal';
 
-const BASE_URL = 'http://127.0.0.1:8000'; // Reemplaza con la URL de tu servidor Django
+const BASE_URL = 'http://54.205.255.125:8000'; // Reemplaza con la URL de tu servidor Django
 
 function TableList() {
   const [data, setData] = useState([]);
