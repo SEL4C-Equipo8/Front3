@@ -29,6 +29,24 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, .navbar, .carousel-caption, .card-ti
   z-index: 1;
 }
 
+.gray-background {
+  transition: transform 0.3s ease; /* Asegura una transición suave al cambiar el tamaño */
+}
+
+.gray-background:hover {
+  transform: scale(1.05); /* Aumenta el tamaño del formulario en un 5% cuando se pasa el cursor */
+}
+
+
+.blue-background {
+  transition: transform 0.3s ease; /* Asegura una transición suave al cambiar el tamaño */
+}
+
+.blue-background:hover {
+  transform: scale(1.05); /* Aumenta el tamaño del formulario en un 5% cuando se pasa el cursor */
+}
+
+
 
 .img-fluid{
   width: 400px;
@@ -45,3 +63,119 @@ body, h1, h2, h3, h4, h5, h6, p, a, button, .navbar, .carousel-caption, .card-ti
 
 
 }
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(30px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.card-fade-in-up {
+  animation: fadeInUp 1s forwards;
+  opacity: 0; /* Esto es para que las tarjetas comiencen invisibles y la animación las haga aparecer */
+}
+
+
+.custom-card-design {
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.custom-card-design:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+.custom-card-design img {
+  transition: transform 0.3s;
+  width: 100%;
+}
+
+.custom-card-design:hover img {
+  transform: scale(1.1);
+}
+
+
+.custom-card-design .card-body {
+  background: linear-gradient(rgba(255,255,255,0.9), rgba(144, 144, 144, 0.9));
+  position: absolute;
+  top: 240px;  /* Ajusta este valor para mover el Card.Body más arriba o más abajo */
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+
+}
+
+
+
+.title-hover-effect {
+  color: transparent;
+  transition: transform 0.3s ease-in-out;
+}
+
+.title-hover-effect:hover {
+  transform: scale(1.1);
+}
+
+.t-stroke {
+  -moz-text-stroke-width: 2px;
+  -webkit-text-stroke-width: 2px;
+  -moz-text-stroke-color: #000000;
+  -webkit-text-stroke-color: #ffffff;
+}
+
+.t-shadow {
+  text-shadow: 7px 7px #050538, 1px 1px 8px rgba(0,0,0,0.2);
+}
+
+
+.logo-section {
+  padding: 50px 0;
+  background: rgb(223, 223, 223);
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: dimgray;
+}
+
+.logo-container {
+  transition: transform 0.3s ease;
+  height: 300px; /* Define el tamaño fijo del contenedor del logo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: linear-gradient(45deg, #959494, #ffffff);
+  transition: all 0.3s, background 2s;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e0e0e0; /* Un borde sutil */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+.logo-container:hover {
+  background: linear-gradient(-45deg, #959494, #ffffff);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+.logo-container:hover {
+  transform: translateY(-20px);  /* Hace que el logo se desplace hacia arriba cuando se pasa el cursor */
+}
+
+.logo-image {
+  max-width: 100%;
+  max-height: 100%;
+  transition: all 0.5s ease;
+}
+

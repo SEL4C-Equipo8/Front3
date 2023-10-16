@@ -1,24 +1,39 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
+import React, { useState } from 'react';
+import './CustomButton.css';
 
 function CustomButton({ text, onClick }) {
-  return (
-    <Button
-      variant="primary" 
-      style={{
-        backgroundColor: 'white',
-        color: 'black',
-        fontWeight: '500',
-        borderRadius: '50px',
-        borderColor: 'black',
-        width: '120px', // Establece el ancho predeterminado en píxeles
-        height: '40px', // Establece la altura predeterminada en píxeles
-      }}
-      onClick={onClick}
-    >
-      {text}
-    </Button>
-  );
+    const [coords, setCoords] = useState({ x: -1, y: -1 });
+
+    const addRippleEffect = (e) => {
+        const rect = e.target.getBoundingClientRect();
+        setCoords({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        });
+        onClick && onClick(e);
+    }
+
+    return (
+        <button
+            className="custom-button"
+            onClick={addRippleEffect}
+            style={{
+                position: 'relative',
+                overflow: 'hidden'
+            }}
+        >
+            <span>{text}</span>
+            {coords.x !== -1 && (
+                <span
+                    className="ripple"
+                    style={{
+                        left: coords.x,
+                        top: coords.y
+                    }}
+                ></span>
+            )}
+        </button>
+    );
 }
 
 export default CustomButton;

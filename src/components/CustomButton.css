@@ -1,0 +1,44 @@
+.custom-button {
+    background: linear-gradient(45deg, #cecece, #ffffff);
+    color: black;
+    font-weight: 500;
+    border-radius: 50px;
+    border-width: 2.5px;
+    border-color: black;
+    width: 120px;
+    height: 40px;
+    font-size: 1.0em;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s, background 2s;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.custom-button:hover {
+    background: linear-gradient(-45deg, #cecece, #ffffff);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+.custom-button span {
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+.custom-button .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}

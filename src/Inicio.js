@@ -2,12 +2,16 @@ import {Row,Col, Card, Carousel} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CustomButton from './components/CustomButton';
 import Header from './components/Header';
+import Header2 from './components/Header2';
 import Footer from './components/Footer';
 import './Inicio.css';
 import React, { useState } from 'react';
 import { loginUser } from './models/User';
 
-function Login() {
+
+//FORMS////
+
+function Login({ onSuccessfulLogin }) {  // Acepta una función callback como prop
   const [email, setEmail] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [message, setMessage] = useState('');
@@ -16,17 +20,12 @@ function Login() {
     const result = await loginUser(email, contrasena);
 
     if (result.success) {
-      // Si el inicio de sesión es exitoso, muestra una alerta de éxito
-      //No se ha podido iniciar sesión
       alert('Inicio de sesión exitoso');
-      window.location.reload();
       setMessage('');
-      // Puedes redirigir o realizar otras acciones después del inicio de sesión exitoso aquí
+      onSuccessfulLogin();  // Llama a la función callback cuando el inicio de sesión es exitoso
     } else {
-      // Si el inicio de sesión falla, muestra una alerta de error
-      alert('Inicio de sesión exitoso');
-      window.location.reload();
-      setMessage(result.message); // Esto es opcional, puedes usar setMessage para mostrar el mensaje en el componente
+      alert('Error en el inicio de sesión');
+      setMessage(result.message);
     }
   };
 
@@ -76,33 +75,53 @@ return (
   </div>
 );
 }
+//FORMS////
 
+//carusel fade -->efecto desvanecerdor
+//////INICIO///////
 
-
-
-
+//#2196F3, #FF5722
 
 function Inicio() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  
+
   return (
     <div className="App" style={{ backgroundColor: '#DCDCDC' }}>
-    <Header></Header>
+      {isLoggedIn ? <Header /> : <Header2 />}
     <main>
-        <Carousel>
-          <Carousel.Item>
-            <div style={{ backgroundColor: '#003087', height: '50vh', width: '100%',display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }}>
-              <Carousel.Caption className="text-center" style={{ marginBottom: '110px' }}>
-                <h1>Bienvenido a SEL4C</h1>
-                <p>Social Entrepreneurship Learning 4 Complexity</p>
-                <CustomButton text="Comenzar" onClick={() => {/* Tu función onClick personalizada */}} />
-              </Carousel.Caption>
-            </div>
-          </Carousel.Item>
+    
+        <Carousel >
+        <Carousel.Item>
+    <div style={{ 
+        background: 'linear-gradient(45deg, #003087, 	#DCDCDC)', 
+        height: '60vh', 
+        width: '100%', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        justifyContent: 'flex-start' 
+    }}>
+        <Carousel.Caption className="text-center" style={{ marginBottom: '160px' }}>
+        <h1 style={{ marginBottom: '30px', fontSize: '55px', fontWeight: '800', WebkitTextStroke: '0.3px gray', color: 'white' }}>Bienvenido a SEL4C</h1>
+            <p style={{ margin: '20px', marginBottom: '40px',fontSize: '20px' }}>Social Entrepreneurship Learning 4 Complexity</p>
+            <CustomButton 
+                text="Comenzar" 
+                onClick={() => {/* Tu función onClick personalizada */}}
+                style={{ marginBottom: '100%' }}
+            />
+        </Carousel.Caption>
+    </div>
+</Carousel.Item>
+
 
           <Carousel.Item>
           <div
             style={{
                 backgroundColor: '#6D8DA1',
-                height: '50vh',
+                height: '60vh',
                 width: '100%',
                 display: 'flex',
                 flexDirection: 'row',
@@ -112,14 +131,14 @@ function Inicio() {
             }}
             >
             <div style={{ flex: 1 }}>
-                <h1 style={{ textAlign: 'center' }}>Descarga la app</h1>
+                <h1 style={{ textAlign: 'center' , fontSize: '55px', fontWeight: '600'}}>Descarga la app</h1>
             </div>
             <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <img
                 src="celular.png"
                 alt="Imagen de la app"
                 className="img-fluidd"
-                style={{ maxWidth: '90%', maxHeight: '90%' }}
+                style={{ maxWidth: '110%', maxHeight: '110%' }}
                 />
             </div>
         </div>
@@ -127,112 +146,132 @@ function Inicio() {
         </Carousel.Item>
         </Carousel>
 
+   
 
 
-        <div style={{ marginTop: '90px', marginBottom: '90px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#DCDCDC' }}>
-          <Row>
-            <Col style={{ margin: '70px' }}>
-                <Card style={{ width: '18rem', border: '12px solid #A3A4A5', borderRadius: '15px', backgroundColor: '#A3A4A5', maxHeight: '400px' }}>
-                    <Card.Img variant="top" src="foto8.jpeg" />
-                    <Card.Title style={{ color: 'white', textAlign: 'center', fontSize: '1.4rem', padding: '0px' }}>
-                        Metodología SEL4C
-                    </Card.Title>
-                </Card>
-            </Col>
-
-            <Col style={{ margin: '70px' }}>
-                <Card style={{ width: '18rem', border: '12px solid #A3A4A5', borderRadius: '15px', backgroundColor: '#A3A4A5', maxHeight: '400px' }}>
-                    <Card.Img variant="top" src="foto9.jpeg" />
-                    <Card.Title style={{ color: 'white', textAlign: 'center', fontSize: '1.4rem', padding: '0px' }}>
-                        Generar Valor
-                    </Card.Title>
-                </Card>
-            </Col>
-
-            <Col style={{ margin: '70px' }}>
-                <Card style={{ width: '18rem', border: '12px solid #A3A4A5', borderRadius: '15px', backgroundColor: '#A3A4A5', maxHeight: '400px' }}>
-                    <Card.Img variant="top" src="foto7.jpeg" />
-                    <Card.Title style={{ color: 'white', textAlign: 'center', fontSize: '1.4rem', padding: '0px',marginTop: '30px' }}>
-                        Emprendimiento Social
-                    </Card.Title>
-                </Card>
-            </Col>
-        </Row>
-        </div>
+        <div style={{ 
+    marginTop: '50px',  // Incrementado de 150px a 200px
+    marginBottom: '10px',  // Incrementado de 150px a 200px
+    minHeight: '800px',  // Incrementado de 600px a 800px
+    padding: '100px 0',  // Incrementado de 50px a 100px
+    display: 'flex', 
+    flexDirection: 'column', 
+    alignItems: 'center',
+    background: 'linear-gradient(to right, rgb(97, 67, 133), rgb(81, 99, 149))'
+}}>
 
 
- <div style={{ marginTop: '150px', marginBottom: '150px', backgroundColor: '#789CEA', minHeight: '500px' }}>
-      <Row>
-         <Col style={{ 
+    <h2 className="title-hover-effect t-stroke t-shadow" style={{
+        marginBottom: '70px',
+        fontSize: '3.0em',
+        fontWeight: '600',
+        letterSpacing: '1px',
+        display: 'inline-block',
+        textTransform: 'uppercase',
+    }}>
+        Nuestras Características
+    </h2>
+
+
+    
+
+    
+    <Row>
+        <Col style={{ margin: '40px' }}>
+            <Card   style={{ width: '22rem' }}className="card-fade-in-up custom-card-design">
+                <Card.Img variant="top" src="foto8.jpeg" />
+                <Card.Body>
+                    <Card.Title>Metodología SEL4C</Card.Title>
+                </Card.Body>
+            </Card>
+        </Col>
+
+        <Col style={{ margin: '40px' }}>
+            <Card style={{ width: '22rem' }}className="card-fade-in-up custom-card-design">
+                <Card.Img variant="top" src="foto9.jpeg" />
+                <Card.Body>
+                    <Card.Title>Generar Valor</Card.Title>
+                </Card.Body>
+            </Card>
+        </Col>
+
+        <Col style={{ margin: '40px' }}>
+            <Card style={{ width: '22rem' }}className="card-fade-in-up custom-card-design">
+                <Card.Img variant="top" src="foto7.jpeg" />
+                <Card.Body>
+                    <Card.Title>Emprendimiento Social</Card.Title>
+                </Card.Body>
+            </Card>
+        </Col>
+    </Row>
+</div>
+
+
+
+
+
+
+
+
+
+<div style={{ marginTop: '150px', marginBottom: '150px', backgroundColor: '#789CEA', minHeight: '600px' }}>
+    <Row>
+        <Col style={{ 
             color: 'white', 
             display: 'flex', 
             flexDirection: 'column', 
-            alignItems: 'center' ,
-            backgroundImage: 'url("/imagen.png")', // Reemplaza con la ruta de tu imagen
-            backgroundSize: 'cover',}}>
-          <div
-            style={{
-           // Ajusta la altura según tus necesidades
-            marginTop: '200px',
-            textAlign: 'left', // Para centrar el contenido horizontalmente en la columna
-            }}>
-            <h1 style={{ fontWeight: 'bold' }}>Inicia Sesión</h1>
-            <p>
-            Comienza a conocer el desempeño de tus estudiantes.
-            </p>
-            <p>
-            Ingresa el usuario y la contraseña que se te ha designado inicialmente.
-            </p>
-          </div>
+            alignItems: 'center',
+            backgroundImage: 'url("/imagen.png")',
+            backgroundSize: 'cover',
+        }}>
+            <div style={{ marginTop: '100px', textAlign: 'left' }}>
+                <h1 style={{ fontWeight: 'bold', fontSize: '3.0em', marginTop: '50px' }}>Inicia Sesión</h1>
+                <p style={{ fontSize: '1.6em', marginTop: '50px' }}>
+                    Comienza a conocer<br/> 
+                    el desempeño de tus<br/> 
+                    estudiantes. Ingresa el<br/> 
+                    usuario y la contraseña<br/> 
+                    que se te ha designado<br/>
+                    inicialmente.
+                </p>
+            </div>
         </Col>
 
+        <Col className="text-center card-fade-in-up">  {/* Agregada la clase card-fade-in-up para la animación */}
+            <div className="position-relative" style={{ marginLeft: '100px' }}>
+                <div className="blue-background"></div>
+                <div className="gray-background">
+                    <h1 style={{ marginTop: '60px' }}>Inicio de Sesión</h1>
+                    <h2 style={{ marginTop: '0px' }}>SEL4C</h2>
+                    <p style={{ marginTop: '0px' }}>Social Entrepreneurship Learning 4 Complexity.</p>
+                    <div>
+                        {/* Otro contenido de tu componente Inicio */}
+                        <Login onSuccessfulLogin={() => setIsLoggedIn(true)} /> 
+                        {/* Más contenido de tu componente Inicio */}
+                    </div>
+                </div>
+            </div>
+        </Col>
+    </Row>
+</div>
+
+
+
+
+
+<div className="logo-section">
+    <h2 className="section-title">Socios Formadores</h2>
+    <Row className="justify-content-center">
+        <Col xs={4} md={3} className="logo-container mx-3">
+            <img src="logo2.png" alt="Imagen 1" className="logo-image" />
+        </Col>
         
-        <Col className="text-center">
-        <div className="position-relative" style={{ marginLeft: '100px' }}>
-            <div className="blue-background" ></div>
-            <div className="gray-background">
-            <h1 style={{marginTop:'60px'}}>Inicio de Sesión</h1>
-            <h2 style={{marginTop:'0px'}}>SEL4C</h2>
-            <p style={{marginTop:'0px'}}>Social Entrepreneurship Learning 4 Complexity.</p>
-            <div>
-            {/* Otro contenido de tu componente Inicio */}
-            <Login/>
-            {/* Más contenido de tu componente Inicio */}
-          </div>
-            </div>
-        </div>
+        <Col xs={4} md={3} className="logo-container mx-3">
+            <img src="logo3.png" alt="Imagen 2" className="logo-image" />
         </Col>
+    </Row>
+</div>
 
-   
-      </Row>
-    </div>
-
-
-
-
-    <div style={{ backgroundColor: '#DCDCDC' }}>
-        <Row>
-          <Col style={{ backgroundColor: '#DCDCDC' }}>
-            <Card.Body>
-                <Card.Body>
-                <Row className="mb-4 justify-content-center">
-          <Col style={{ backgroundColor: '#BFBFBF' }} className="mx-2">
-            <div className="text-center"> {/* Envuelve la imagen en un div centrado */}
-              <img src="logo2.png" alt="Imagen 1" className="img-fluid" />
-            </div>
-          </Col>
-          
-          <Col style={{ backgroundColor: '#BFBFBF' }} className="mx-4">
-            <div className="text-center"> {/* Envuelve la imagen en un div centrado */}
-              <img src="logo3.png" alt="Imagen 2" className="img-fluid2" />
-            </div>
-          </Col>
-        </Row>
-                </Card.Body>
-            </Card.Body>
-          </Col>
-        </Row>
-      </div>
 
     </main>
     <Footer></Footer>
