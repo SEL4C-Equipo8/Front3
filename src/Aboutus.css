@@ -1,22 +1,54 @@
-/* Aboutus.css */
+.Aboutus {
+    background-color: #FFFFFF;
+}
 
 .aboutus-container {
     margin-top: 50px;
     margin-bottom: 50px;
 }
 
+.main-title {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 40px;
+    font-weight: 500;
+    font-size: 350%
+    
+}
+
 .aboutus-card {
     margin-top: 20px;
     margin-bottom: 40px;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #FFFFFF;
     transition: transform 0.2s;
-  
-    
+    border-width: 8px; /* Borde más grueso */
+    border-style: solid;
 }
 
 .aboutus-card:hover {
     transform: scale(1.03);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #424242;
+    line-height: 1.5;
+}
+
+.carda-img {
+    border-radius: 10px;
+    width: 240px;
+    height: 240px;
+    margin-left: 200px;
+    margin-top: -20px;
 }
 
 .fade-in {
@@ -33,46 +65,56 @@
     }
 }
 
-/* Estilos para las imágenes */
-img {
-    border-radius: 15px;
-    max-width: 100%;
-    height: auto;
+/* Colores de bordes para las cards */
+.card-red {
+    border: none;
+    border-color: #FF0000;
+    border-width: 4px;
 }
 
-/* Estilos generales para ajustar la apariencia */
+.card-blue {
+    border: none;
+    border-color: #003087;
+    border-width: 4px;
 
-
-.aboutus-card {
-    background-color: #ffffff;
 }
 
-/* Aboutus.css */
 
-/* ... (otros estilos que ya tenías) ... */
+.card-green {
+    border: none;
+    border-color: #008000;
+    border-width: 4px;
 
-/* Centrar el h1 */
-h1.aboutus {
-    text-align: center;
-    padding: 30px 0;
-    font-weight: 500;
-    font-size: 350%;
 }
 
-/* Estilo general para Card.Title */
-.card-title {
-    margin-top: 30px;  /* Ajusta según tu preferencia */
-}
-
-/* Estilo específico para alternar alineación */
-.card:nth-child(odd) .card-title {
+/* Alineaciones específicas para los títulos */
+.align-right {
     text-align: right;
-    padding-right: 50px; /* Ajusta este valor según tu preferencia */
+}
+
+.align-left {
+    text-align: left;
+}
+
+.title-background-red {
+    background: linear-gradient(to right, #FF0000, rgba(255,0,0,0.5));
+    padding: 15px 15px;
+    display: inline-block;
+    width: 100%;
+}
+
+.title-background-blue {
+    background: linear-gradient(to right, #003087, rgba(0,48,135,0.5));
+    padding: 15px 15px;
+    display: inline-block;
+    width: 100%;
 
 }
 
-.card:nth-child(even) .card-title {
-    text-align: left;
-    padding-left: 50px; /* Ajusta este valor según tu preferencia */
+.title-background-green {
+    background: linear-gradient(to right, #008000, rgba(0,128,0,0.5));
+    padding: 15px 15px;
+    display: inline-block;
+    width: 100%;
 
 }

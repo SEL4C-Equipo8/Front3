@@ -1,9 +1,9 @@
 import React from 'react';
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from 'react-router-dom';
-import './Header.css'; // Importa el archivo CSS
+import './Header2.css'; // Importa el archivo CSS
 
-function Header() {
+function Header2() {
   const brandStyles = {
     color: 'black',
     fontWeight: 'bold', // Para hacer el texto en negritas
@@ -26,19 +26,9 @@ function Header() {
               <Nav.Link as={Link} to="/" className="nav-link">
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to="/dashboard" className="nav-link">
-                Dashboard
-              </Nav.Link>
-              <Nav.Link as={Link} to="/gestion" className="nav-link">
-                Gestión
-              </Nav.Link>
               <Nav.Link as={Link} to="/aboutus" className="nav-link">
                 About Us
               </Nav.Link>
-              <Nav.Link as={Link} to="/rutaDeTuEnlace" className="nav-link">
-                <img src="usuario2.png" alt="imgU" style={{ width: '25px', height: '25px' }} />
-              </Nav.Link>
-
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -47,9 +37,4 @@ function Header() {
   );
 }
 
-export default Header;
-
-
-
-
-
+export default Header2;
