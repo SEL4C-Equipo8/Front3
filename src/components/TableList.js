@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import ChartModal from './ChartModal';
 
-const BASE_URL = 'https://34.230.9.105:8000'; // Reemplaza con la URL de tu servidor Django
+const BASE_URL = 'http://34.230.9.105:8000'; // Reemplaza con la URL de tu servidor Django
 
 function TableList() {
   const [data, setData] = useState([]);
@@ -26,7 +26,11 @@ function TableList() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/admin/users`);
+      const response = await axios.get(`${BASE_URL}/api/admin/users`, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
       setData(response.data.users);
       setLoading(false);
     } catch (err) {
@@ -35,6 +39,7 @@ function TableList() {
       console.error("Hubo un error al obtener los datos:", err);
     }
   };
+  
 
   useEffect(() => {
     fetchData(); // Llamada inicial

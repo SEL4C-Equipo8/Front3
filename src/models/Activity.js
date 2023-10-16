@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://34.230.9.105:8000'; // Reemplaza esto con la URL de tu servidor Django
+const BASE_URL = 'http://34.230.9.105:8000'; // Reemplaza esto con la URL de tu servidor Django
 
 export async function createActivity(titulo, descripcion) {
   const url = `${BASE_URL}/api/admin/activities/`; // Asegúrate de que la URL sea la correcta
