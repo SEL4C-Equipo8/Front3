@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://34.230.9.105:8000'; // Reemplaza esto con la URL de tu servidor Django
+const BASE_URL = 'https://34.230.9.105:8000'; // Reemplaza esto con la URL de tu servidor Django
 
 export async function createModule(idActividad, titulo_mod, instrucciones, imagen_mod, tipo_multimedia) {
   const url = `${BASE_URL}/api/admin/activity/${idActividad}/module/create/`; // URL para crear un módulo en una actividad específica
