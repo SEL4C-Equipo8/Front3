@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './CustomButton.css';
+import "./CustomButton.css"
 
 function CustomButton({ text, onClick }) {
     const [coords, setCoords] = useState({ x: -1, y: -1 });
