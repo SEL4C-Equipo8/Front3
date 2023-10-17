@@ -26,11 +26,7 @@ function TableList() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/admin/users`, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+      const response = await axios.get(`${BASE_URL}/api/admin/users`);
       setData(response.data.users);
       setLoading(false);
     } catch (err) {
@@ -39,7 +35,6 @@ function TableList() {
       console.error("Hubo un error al obtener los datos:", err);
     }
   };
-  
 
   useEffect(() => {
     fetchData(); // Llamada inicial
@@ -94,4 +89,3 @@ function TableList() {
 }
 
 export default TableList;
-
