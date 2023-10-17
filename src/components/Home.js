@@ -33,7 +33,6 @@ function Home({ Toggle }) {
       </div>
 
       <div className='chart-container'>
-        <TableList />
 
       </div>
     </div>

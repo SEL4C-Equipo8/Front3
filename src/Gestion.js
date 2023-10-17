@@ -30,8 +30,11 @@ function Gestion() {
     try {
       const url = `${BASE_URL}/api/admin/activities/all/`;
       console.log('Token de autorización:', localStorage.getItem('token')); // Agrega esta línea
+  
       const response = await axios.get(url, {
-        
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
   
       console.log('Respuesta de Axios:', response); // Agrega esta línea
@@ -44,6 +47,7 @@ function Gestion() {
       // Aquí puedes mostrar un mensaje de error al usuario o realizar otras acciones de manejo de errores.
     }
   };
+  
 
   // Función para eliminar una actividad
   const handleDeleteActivity = async (idActividad) => {

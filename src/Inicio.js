@@ -157,7 +157,7 @@ function Inicio() {
     display: 'flex', 
     flexDirection: 'column', 
     alignItems: 'center',
-    background: 'linear-gradient(to right, rgb(97, 67, 133), rgb(81, 99, 149))'
+    background: 'linear-gradient(to right,  white,rgb(164, 164, 164)    '
 }}>
 
 
