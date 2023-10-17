@@ -25,7 +25,7 @@ function Gestion() {
   }
 
   // Función para cargar las actividades desde el servidor
-  const BASE_URL = 'http://34.230.9.105:8000/';
+  const BASE_URL = 'https://sel4c.online';
   const loadActivities = async () => {
     try {
       const url = `${BASE_URL}/api/admin/activities/all/`;
