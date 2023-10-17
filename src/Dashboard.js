@@ -6,6 +6,7 @@ import Sidebar2 from './components/Sidebar2';
 import axios from 'axios';
 import { Bar } from 'react-chartjs-2'; // Importa el componente de gráfico de barras
 
+
 function Dashboard() {
   const [toggle, setToggle] = useState(true);
   const [userData, setUserData] = useState([]);
@@ -16,7 +17,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://34.230.9.105:8000/api/admin/users');
+        const response = await axios.get('https://sel4c.online/api/admin/users');
         setUserData(response.data.users);
 
         // Agrega un console.log para mostrar las edades de los usuarios

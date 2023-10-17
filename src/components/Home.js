@@ -1,7 +1,6 @@
 import React from 'react';
 import Nav from './Navbar';
 import './Home.css'; // Crear un archivo Home.css para definir estilos personalizados
-import TableList from './TableList';
 
 function Home({ Toggle }) {
   return (
