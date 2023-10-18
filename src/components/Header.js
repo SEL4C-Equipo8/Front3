@@ -1,25 +1,68 @@
-import React from 'react';
-import { Navbar, Container, Nav } from "react-bootstrap";
-import { Link } from 'react-router-dom';
-import './Header.css'; // Importa el archivo CSS
+import React, { useState, useEffect } from "react";
+import { Navbar, Container, Nav, Modal, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "./Header.css"; // Importa el archivo CSS
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Header() {
+  const navigate = useNavigate();
   const brandStyles = {
-    color: 'black',
-    fontWeight: 'bold', // Para hacer el texto en negritas
-    fontSize: '30px',   // Para aumentar el tamaño de la letra
+    color: "black",
+    fontWeight: "bold", // Para hacer el texto en negritas
+    fontSize: "30px", // Para aumentar el tamaño de la letra
   };
 
   const navbarStyles = {
-    borderBottom: '4px solid gray', // Línea de color gris debajo del encabezado
-    backgroundColor: 'white', // Fondo blanco
+    borderBottom: "4px solid gray", // Línea de color gris debajo del encabezado
+    backgroundColor: "white", // Fondo blanco
   };
+
+  const [showProfileModal, setShowProfileModal] = useState(false); // Estado para el modal
+  const [adminData, setAdminData] = useState(null);
+  const id_admin = localStorage.getItem("id_admin");
+
+  const handleLogout = () => {
+    axios
+      .get("/api/admin/logout/")
+      .then((response) => {
+        if (response.data.includes("Sesion cerrada")) {
+          localStorage.removeItem("id_admin");
+          console.log(id_admin);
+          navigate("/", { state: { toastMessage: "Sesiòn cerrada exitòsamente" } });
+        } else {
+          // Handle any other responses here
+        }
+      })
+      .catch((error) => {
+        console.error("Error with the request:", error);
+        toast.error("An error occurred while logging out.");
+      });
+  };
+
+  useEffect(() => {
+    if (showProfileModal && id_admin) {
+      // Realiza la petición al backend para obtener los detalles del administrador
+      axios
+        .get(`/api/admin/${id_admin}/`)
+        .then((response) => {
+          setAdminData(response.data);
+        })
+        .catch((error) => {
+          console.error("Error al obtener los datos del administrador:", error);
+        });
+    }
+  }, [showProfileModal, id_admin]);
 
   return (
     <header>
       <Navbar style={navbarStyles} expand="lg">
         <Container>
-          <Navbar.Brand to="/" style={brandStyles}>SEL4C</Navbar.Brand>
+          <Navbar.Brand to="/" style={brandStyles}>
+            SEL4C
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
@@ -35,21 +78,57 @@ function Header() {
               <Nav.Link as={Link} to="/aboutus" className="nav-link">
                 About Us
               </Nav.Link>
-              <Nav.Link as={Link} to="/rutaDeTuEnlace" className="nav-link">
-                <img src="usuario2.png" alt="imgU" style={{ width: '25px', height: '25px' }} />
+              <Nav.Link
+                as={Link}
+                to="#"
+                className="nav-link"
+                onClick={() => setShowProfileModal(true)}
+              >
+                <img
+                  src="usuario2.png"
+                  alt="imgU"
+                  style={{ width: "25px", height: "25px" }}
+                />
               </Nav.Link>
-
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      {/* Añadimos el componente Modal aquí */}
+      <Modal show={showProfileModal} onHide={() => setShowProfileModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Perfil del Usuario</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {adminData ? (
+            <>
+              <p>
+                <strong>Correo:</strong> {adminData.correo}
+              </p>
+              <p>
+                <strong>Username:</strong> {adminData.username}
+              </p>
+            </>
+          ) : (
+            <p>Cargando datos del perfil...</p>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            onClick={() => setShowProfileModal(false)}
+          >
+            Cerrar
+          </Button>
+          <Button variant="danger" onClick={handleLogout}>
+            Cerrar Sesión
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <ToastContainer />
     </header>
   );
 }
 
 export default Header;
-
-
-
-
-

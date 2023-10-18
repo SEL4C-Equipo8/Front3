@@ -10,17 +10,16 @@
 .main-title {
     text-align: center;
     color: #000000;
-    margin-bottom: 40px;
+    margin-bottom: 100px;
     font-weight: 500;
-    font-size: 350%
-    
+    font-size: 350%;
 }
 
 .aboutus-card {
     margin-top: 20px;
     margin-bottom: 40px;
     border-radius: 15px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     transition: transform 0.2s;
     border-width: 8px; /* Borde más grueso */
     border-style: solid;
@@ -66,28 +65,27 @@
 }
 
 /* Colores de bordes para las cards */
-.card-red {
-    border: none;
-    border-color: #FF0000;
-    border-width: 4px;
-}
 
 .card-blue {
     border: none;
-    border-color: #003087;
+    border-color: #254d99;
     border-width: 4px;
-
 }
-
 
 .card-green {
     border: none;
     border-color: #008000;
     border-width: 4px;
+}
 
+.card-red {
+    border: none;
+    border-color: #1bd1d7; /* Este color ya está correcto */
+    border-width: 4px;
 }
 
 /* Alineaciones específicas para los títulos */
+
 .align-right {
     text-align: right;
 }
@@ -96,25 +94,63 @@
     text-align: left;
 }
 
-.title-background-red {
-    background: linear-gradient(to right, #FF0000, rgba(255,0,0,0.5));
-    padding: 15px 15px;
-    display: inline-block;
-    width: 100%;
-}
-
 .title-background-blue {
-    background: linear-gradient(to right, #003087, rgba(0,48,135,0.5));
-    padding: 15px 15px;
+    background: linear-gradient(to right, #2957ae, rgba(0,48,135,0.5));
+    padding: 25px 15px;
     display: inline-block;
     width: 100%;
-
 }
 
 .title-background-green {
-    background: linear-gradient(to right, #008000, rgba(0,128,0,0.5));
-    padding: 15px 15px;
+    background: linear-gradient(to right, #3c2eb6, rgba(36, 53, 208, 0.5));
+    padding: 25px 15px;
     display: inline-block;
     width: 100%;
+}
 
+.title-background-red {
+    background: linear-gradient(to right, #1bd1d7, rgba(27,209,215,0.5)); /* Actualiza el color aquí también */
+    padding: 25px 15px;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Estilos para la línea de tiempo */
+
+/* ... (otros estilos que no cambian) ... */
+
+/* Estilos para la línea de tiempo */
+
+.timeline {
+    position: relative;
+    max-width: 1200px; /* Puede ajustar este valor según lo necesite */
+    margin: 0 auto;
+    padding: 20px 0; /* Agregamos padding para dar espacio a las tarjetas */
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 10%; /* Ajustamos la posición inicial de la línea */
+    bottom: 10%; /* Ajustamos la posición final de la línea */
+    left: 50%;
+    width: 2px; /* Hacemos la línea más sutil */
+    background: #424242;
+    z-index: 1;
+}
+
+.timeline-item {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 40px;
+}
+
+.timeline-item:nth-child(odd) .aboutus-card {
+    margin-right: 50%;
+    margin-left: 5%; /* Agregamos un pequeño margen para evitar superposiciones */
+}
+
+.timeline-item:nth-child(even) .aboutus-card {
+    margin-left: 50%;
+    margin-right: 5%; /* Agregamos un pequeño margen para evitar superposiciones */
 }

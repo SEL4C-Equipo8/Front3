@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import CustomButton from './components/CustomButton'
 
+const BASE_URL = 'https://sel4c.online'; 
+
 function LoginForm() { 
   const [formData, setFormData] = useState({
     email: '',
@@ -17,13 +19,11 @@ function LoginForm() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('/api/user/login/', formData);      
+      const response = await axios.post(`${BASE_URL}/api/admin/login/`, formData);      
       if (response.status === 200) {
         console.log('Inicio de sesión exitoso');
-        // Realiza cualquier acción adicional que desees después del inicio de sesión exitoso.
       } else {
         console.log('Credenciales inválidas');
-        // Muestra un mensaje de error o realiza otra acción en caso de credenciales inválidas.
       }
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
@@ -34,7 +34,6 @@ function LoginForm() {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-
           <input
             type="email"
             name="email"
@@ -44,7 +43,6 @@ function LoginForm() {
           />
         </div>
         <div>
-
           <input
             type="password"
             name="contrasena"
