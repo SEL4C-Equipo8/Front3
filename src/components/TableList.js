@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
+import Header from './Header';
 import ChartModal from './ChartModal';
 
 const BASE_URL = 'https://sel4c.online'; // Reemplaza con la URL de tu servidor Django
+
 
 function TableList() {
   const [data, setData] = useState([]);
@@ -41,8 +43,13 @@ function TableList() {
 }, []);
 
   return (
-    <div className="container mt-4">
-      <h2>Tabla de Usuarios</h2>
+<>
+      <Header></Header>
+      <section id="timeline" style={{ backgroundColor: '#DFE0DA' }}>
+
+    <div className="container mt-4" >
+    <h1 style={{ fontWeight: '500', fontSize: '350%', marginTop: '-30px', marginBottom: '85px' }}>Tabla de Usuarios</h1>
+
 
       {loading ? (
         <p>Cargando...</p>
@@ -84,8 +91,12 @@ function TableList() {
       )}
 
       <ChartModal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)} evaluationData={currentUserData} />
+      
     </div>
+    </section>
+    </>
   );
+  
 }
 
 export default TableList;

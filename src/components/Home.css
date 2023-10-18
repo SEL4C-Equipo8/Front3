@@ -3,12 +3,22 @@
 .home-container {
     padding: 8px;
     margin-left: 0%;
-    background-color: #e2e2e2;
+    max-width:  100% !important;
+    
   }
 
   .home-card-title {
     font-size: 1.5rem;
+    outline: none !important;
+
+
   }
+  
+  a, a:focus, a:active {
+    outline: none !important;
+    text-decoration: none;
+}
+
   
   
   .home-card {
@@ -25,30 +35,37 @@
     flex-direction: column;
     justify-content: center;
     position: relative;
-    border-top: 4px solid rgb(0, 191, 255); /* Borde superior de color rojo */
-    border-right: 4px solid rgb(30, 30, 195); /* Borde derecho de color azul */
-    border-bottom: 4px solid green; /* Borde inferior de color verde */
-    border-left: 4px solid orange; /* Borde izquierdo de color naranja */
+    outline: none !important;
+
+  
   }
 
   .home-card2 {
-    background-color: white; /* Cambia el fondo a blanco */
+    background: linear-gradient(130deg, #a9afb0, #c0ddda); /* Añade tu degradado aquí */
+    color: white; /* Cambia el color del texto a blanco para que se vea sobre el degradado */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin: 10px;
-    width: 90%; /* Cambia el ancho */
-    max-width: 400px; /* Cambia el ancho máximo */
-    height: 90%; /* Cambia la altura */
+    width: 90%;
+    max-width: 400px;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
-    
+    cursor: pointer; /* Cambia el cursor al pasar sobre la tarjeta */
+    transition: transform 0.3s ease; /* Añade una transición suave */
+    outline: none !important;
+
   }
   
-
+  .home-card2:hover {
+    transform: scale(1.05); /* Aumenta el tamaño de la tarjeta cuando el cursor pase sobre ella */
+  }
+  
+ 
  
   .chart-container {
     background-color: none;

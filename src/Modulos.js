@@ -68,7 +68,7 @@ const Modulos = () => {
 
   useEffect(() => {
     // Cargar actividades desde el servidor
-    axios.get('/api/admin/activities/all/')
+    axios.get('https://sel4c.online/api/admin/activities/all/')
       .then(async (response) => {
         if (response.status === 200) {
           setActivities(response.data);

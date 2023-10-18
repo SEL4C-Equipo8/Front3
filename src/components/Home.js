@@ -1,41 +1,52 @@
 import React from 'react';
 import Nav from './Navbar';
-import './Home.css'; // Crear un archivo Home.css para definir estilos personalizados
+import { Link } from 'react-router-dom'; // Importa Link aquí
+import './Home.css';
 
 function Home({ Toggle }) {
   return (
-    <div className='home-container'>
-      <Nav Toggle={Toggle} />
+    <div>
+      <div className='home-container' style={{background: 'linear-gradient(to top, white, rgb(39, 120, 134))'}}>
 
-      <div className='container'>
-        <div className='row my-3'>
+        <Nav Toggle={Toggle} />
 
-          <div className='col-md-4'>
-            <div className='home-card2 '>
-              <h3 className='home-card-title'>Evaluaciones Inicial</h3>
+        <div className='container'>
+          <div className='row my-3'>
+
+            <div className='col-md-4'>
+              <Link to="/tablas"> {/* Actualiza a la ruta correcta */}
+                <div className='home-card2'>
+                  <h3 className='home-card-title'>Evaluaciones Inicial</h3>
+                </div>
+              </Link>
             </div>
-          </div>
 
-          <div className='col-md-4'>
-            <div className='home-card2'>
-              <h3 className='home-card-title'>Evaluaciones Final</h3>
+            <div className='col-md-4'>
+              <Link to="/tablas"> {/* Actualiza a la ruta correcta */}
+                <div className='home-card2'>
+                  <h3 className='home-card-title'>Evaluaciones Final</h3>
+                </div>
+              </Link>
             </div>
-          </div>
 
-          <div className='col-md-4'>
-            <div className='home-card2'>
-              <h3 className='home-card-title'>Actividades</h3>
+            <div className='col-md-4'>
+              <Link to="/gestion"> {/* Actualiza a la ruta correcta */}
+                <div className='home-card2'>
+                  <h3 className='home-card-title'>Actividades</h3>
+                </div>
+              </Link>
             </div>
+
           </div>
+        </div>
+
+        <div className='chart-container'>
 
         </div>
-      </div>
-
-      <div className='chart-container'>
-
       </div>
     </div>
   );
 }
 
 export default Home;
+

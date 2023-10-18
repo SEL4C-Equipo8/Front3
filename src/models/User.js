@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://sel4c.online' ; // Reemplaza esto con la URL de tu servidor Django
+const BASE_URL = 'https://sel4c.online'; 
 
 export async function loginUser(email, contrasena) {
-  const url = `${BASE_URL}/authentication/login/`; // Asegúrate de que la URL sea la correcta
+  const url = `${BASE_URL}/api/admin/login/`; 
   const data = {
-    email: email,
+    correo: email,
     contrasena: contrasena,
-  };
+};
 
   try {
     const response = await axios.post(url, data, {
@@ -17,16 +17,17 @@ export async function loginUser(email, contrasena) {
     });
 
     if (response.status === 200) {
-      // Aquí puedes manejar la respuesta exitosa, como guardar el token en localStorage
       const token = response.data.token;
       localStorage.setItem('token', token);
       return { success: true, message: 'Inicio de sesión exitoso' };
     } else {
-      // Manejar otros códigos de estado de respuesta, por ejemplo, 401 para credenciales incorrectas
+      console.error(`Código de estado inesperado: ${response.status}`);
+      console.error(response.data);
+      console.log(response.data)
       return { success: false, message: 'Credenciales incorrectas' };
     }
   } catch (error) {
-    // Manejar errores de conexión u otros errores
+    console.error(error);
     return { success: false, message: 'Error de conexión' };
   }
 }
