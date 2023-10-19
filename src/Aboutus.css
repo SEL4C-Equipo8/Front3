@@ -1,156 +1,87 @@
-.Aboutus {
-    background-color: #FFFFFF;
-}
 
-.aboutus-container {
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
 
-.main-title {
-    text-align: center;
-    color: #000000;
-    margin-bottom: 100px;
-    font-weight: 500;
-    font-size: 350%;
-}
-
-.aboutus-card {
-    margin-top: 20px;
-    margin-bottom: 40px;
+.aboutus-section {
+    padding: 90px 0;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
-    background-color: #ffffff;
-    transition: transform 0.2s;
-    border-width: 8px; /* Borde más grueso */
-    border-style: solid;
 }
 
-.aboutus-card:hover {
-    transform: scale(1.03);
+.aboutus-title {
+    font-size: 30px;
+    letter-spacing: 0;
+    line-height: 32px;
+    margin: 0 0 39px;
+    text-transform: uppercase;
+    color: #000;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #fdb801;
 }
 
-.card-title {
-    font-size: 1.5rem;
-    color: #000000;
-    text-align: center;
-    margin-bottom: 20px;
+.aboutus-text {
+    color: #606060;
+    font-size: 16px;
+    line-height: 28px;
+    margin: 0 0 35px;
 }
 
-.card-text {
-    font-size: 1rem;
-    color: #424242;
-    line-height: 1.5;
+.aboutus-more {
+    border: 1px solid #fdb801;
+    border-radius: 25px;
+    color: #fdb801;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0;
+    padding: 7px 20px;
+    text-transform: uppercase;
+    transition: 0.3s ease;
 }
 
-.carda-img {
+.aboutus-more:hover {
+    background-color: #fdb801;
+    color: #fff;
+}
+
+.aboutus-banner {
+    padding: 20px;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    width: 240px;
-    height: 240px;
-    margin-left: 200px;
-    margin-top: -20px;
+    margin-top: 30px;
 }
 
-.fade-in {
-    animation-name: fadeIn;
-    animation-duration: 1.5s;
+.feature {
+    padding-top: 30px;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+.feature-box {
+    margin-bottom: 30px;
 }
 
-/* Colores de bordes para las cards */
-
-.card-blue {
-    border: none;
-    border-color: #254d99;
-    border-width: 4px;
+.iconset {
+    padding: 10px;
+    border: 1px solid #fdb801;
+    border-radius: 50%;
+    margin-right: 20px;
+    float: left;
 }
 
-.card-green {
-    border: none;
-    border-color: #008000;
-    border-width: 4px;
+.icon {
+    color: #fdb801;
+    font-size: 28px;
 }
 
-.card-red {
-    border: none;
-    border-color: #1bd1d7; /* Este color ya está correcto */
-    border-width: 4px;
+.feature-content h4 {
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    color: #333;
 }
 
-/* Alineaciones específicas para los títulos */
-
-.align-right {
-    text-align: right;
+.feature-content p {
+    color: #666;
+    font-size: 16px;
+    line-height: 28px;
 }
 
-.align-left {
-    text-align: left;
-}
 
-.title-background-blue {
-    background: linear-gradient(to right, #2957ae, rgba(0,48,135,0.5));
-    padding: 25px 15px;
-    display: inline-block;
-    width: 100%;
-}
-
-.title-background-green {
-    background: linear-gradient(to right, #3c2eb6, rgba(36, 53, 208, 0.5));
-    padding: 25px 15px;
-    display: inline-block;
-    width: 100%;
-}
-
-.title-background-red {
-    background: linear-gradient(to right, #1bd1d7, rgba(27,209,215,0.5)); /* Actualiza el color aquí también */
-    padding: 25px 15px;
-    display: inline-block;
-    width: 100%;
-}
-
-/* Estilos para la línea de tiempo */
-
-/* ... (otros estilos que no cambian) ... */
-
-/* Estilos para la línea de tiempo */
-
-.timeline {
-    position: relative;
-    max-width: 1200px; /* Puede ajustar este valor según lo necesite */
-    margin: 0 auto;
-    padding: 20px 0; /* Agregamos padding para dar espacio a las tarjetas */
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 10%; /* Ajustamos la posición inicial de la línea */
-    bottom: 10%; /* Ajustamos la posición final de la línea */
-    left: 50%;
-    width: 2px; /* Hacemos la línea más sutil */
-    background: #424242;
-    z-index: 1;
-}
-
-.timeline-item {
-    position: relative;
-    z-index: 2;
-    margin-bottom: 40px;
-}
-
-.timeline-item:nth-child(odd) .aboutus-card {
-    margin-right: 50%;
-    margin-left: 5%; /* Agregamos un pequeño margen para evitar superposiciones */
-}
-
-.timeline-item:nth-child(even) .aboutus-card {
-    margin-left: 50%;
-    margin-right: 5%; /* Agregamos un pequeño margen para evitar superposiciones */
-}

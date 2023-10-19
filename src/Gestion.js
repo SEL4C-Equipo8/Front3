@@ -95,7 +95,7 @@ function Gestion() {
             <div style={{ marginRight: '20px' }}></div> {/* Espacio */}
             <Link to="/modulos"> {/* Agrega un enlace al botón */}
               <Button variant="outline-light" style={{ width: '380px', height: '85px', borderRadius: '20px', borderColor: '#003087', borderWidth: '2.5px', color: 'black', fontSize: '20px' }}>
-                Modulos
+                Módulos
               </Button>
             </Link>
           </div>

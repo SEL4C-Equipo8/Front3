@@ -16,6 +16,7 @@
 .card {
   margin-bottom: 50px;
   height: 350px; /* Cambia la altura de la tarjeta según tus preferencias */
+  border: 8px solid rgb(0, 33, 65); /* Esto añade el borde */
 }
 
 .card-header {
@@ -51,12 +52,7 @@
 }
 
 
-.expandable-box.open {
-  border-color: #dd0000;
-  width: 96%;
-  height: 180px;
-  margin: 0;
-}
+
 
 .expandable-box.out {
   width: 0;
@@ -84,3 +80,7 @@
   transition: all 0.3s ease-in-out; /* Añade la transición solo a la caja expandida */
 }
 
+.button-container {
+  display: flex;
+  align-items: center; /* esto es opcional, para alinear verticalmente */
+}

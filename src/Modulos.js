@@ -118,27 +118,28 @@ const Modulos = () => {
 
             return (
               <div key={activityIndex}>
-                <Row className="d-flex justify-content-between align-items-center">
-                  <Col xs={9}>
+                <Row className="d-flex justify-content-between align-items-center" style={{ marginTop: '150px',marginBottom :'30px', backgroundColor:'#C8D0D1',borderRadius: '15px', height:'100px' }}>
+                <Col xs={9} style={{ marginTop: '0px' }}>
                     <h2>{activity.titulo}</h2>
-                  </Col>
-                  <Col xs={3} className="text-right">
+                </Col>
+                <Col xs={3} className="text-center" style={{ margintop: '0px' }}>
                     <Button variant="primary" 
-                      style={{
-                        backgroundColor: 'white',
-                        color: 'black',
-                        fontWeight: '500',
-                        borderRadius: '50px',
-                        borderColor: 'black',
-                        width: '150px',
-                        height: '40px',
-                        marginBottom: '180px',
-                      }}
-                      onClick={() => handleOpenModal(null, idActividad)}>
+                        style={{
+                            backgroundColor: 'white',
+                            color: 'black',
+                            fontWeight: '500',
+                            borderRadius: '50px',
+                            borderColor: 'black',
+                            width: '150px',
+                            height: '40px',
+                            marginBottom: '0px',
+                        }}
+                        onClick={() => handleOpenModal(null, idActividad)}>
                         Crear Módulo
                     </Button>
-                  </Col>
-                </Row>
+                </Col>
+            </Row>
+
 
                 {/* Renderizar módulos dinámicamente */}
                 <Row>
@@ -146,19 +147,26 @@ const Modulos = () => {
                     <Col key={moduleIndex} xs={12} sm={6} md={4}>
                       <div className="box-container">
                         <Card className="demo-card demo-card--step">
-                          <Card.Body>
+                        <Card.Body style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                             <Card.Title style={{ color: 'white', fontSize: '40px' }}>
                               {module.titulo_mod}
                             </Card.Title>
-                            <div style={{ display: 'flex', justifyContent: 'flex-end', marginRight: '6%', marginTop: '7%', marginBottom: '3%' }}>
-                              <Button variant="outline-light" style={{ width: '120px', height: '40px' }} onClick={() => handleOpenModal(module.titulo_mod, idActividad, module)}>
-                                Modificar 
-                              </Button>
-                              <div style={{ marginRight: '10px' }}></div>
-                              <Button variant="outline-light" style={{ width: '120px', height: '40px' }} onClick={() => handleDeleteModule(idActividad, module.id_modulo)}>
-                                Eliminar 
-                              </Button>
-                            </div>
+                            <div className="button-container">
+                            <Button 
+                              variant="outline-light" 
+                              style={{ width: '120px', height: '40px', marginRight: '10px' }} 
+                              onClick={() => handleOpenModal(module.titulo_mod, idActividad, module)}
+                          >
+                              Modificar 
+                          </Button>
+                          <Button 
+                              variant="outline-light" 
+                              style={{ width: '120px', height: '40px' }} 
+                              onClick={() => handleDeleteModule(idActividad, module.id_modulo)}
+                          >
+                              Eliminar 
+                          </Button>
+                        </div>
                           </Card.Body>
                         </Card>
                       </div>

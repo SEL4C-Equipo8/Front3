@@ -123,7 +123,7 @@ function Inicio() {
               >
                 <h1
                   style={{
-                    marginBottom: "30px",
+                    marginBottom: "0px",
                     fontSize: "55px",
                     fontWeight: "800",
                     WebkitTextStroke: "0.3px gray",
