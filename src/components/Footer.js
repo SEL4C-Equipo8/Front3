@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 function Footer() {
   return (
-    <footer class="py-5 my-5" style={{backgroundColor: '#214E7F'}}>
+    <footer class="py-5 my-0" style={{backgroundColor: '#214E7F'}}>
       <Container className="px-4">
         <Row>
           <Col>
@@ -14,7 +14,7 @@ function Footer() {
           </Col>
           <Col>
             <div>
-              <img src="appleDownload.png" alt="Imagen" className="img-fluid" />
+            <img src="appleDownload.png" alt="Imagen" className="img2-fluid" style={{ width: "30%" }} />
             </div>
           </Col>
         </Row>
