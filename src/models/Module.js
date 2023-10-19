@@ -130,3 +130,24 @@ export async function getModulesByActivity(idActividad) {
     return { success: false, message: 'Error de conexión' };
   }
 }
+
+export async function getModuleDetail(idActividad, idModulo) {
+  const url = `${BASE_URL}/api/admin/activity/${idActividad}/module/${idModulo}/`;
+
+  try {
+    const response = await axios.get(url, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`, // Token de autenticación
+      },
+    });
+
+    if (response.status === 200) {
+      return { success: true, data: response.data };
+    } else {
+      return { success: false, message: 'Error al obtener el detalle del módulo' };
+    }
+  } catch (error) {
+    console.error('Error al obtener el detalle del módulo:', error);
+    return { success: false, message: 'Error de conexión' };
+  }
+}

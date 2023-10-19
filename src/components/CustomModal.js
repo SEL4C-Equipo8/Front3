@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
@@ -6,23 +6,29 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 function CustomModal(props) {
-  const { show, onHide, moduleData, onSave } = props;
+  const { show, onHide, moduleData, onSave, activityTitle } = props;
+  
   const [titulo, setTitulo] = useState(moduleData ? moduleData.titulo_mod : '');
   const [descripcion, setDescripcion] = useState(moduleData ? moduleData.instrucciones : '');
   const [imagen] = useState(moduleData ? moduleData.imagen_mod : null);
   const [tipoMultimedia, setTipoMultimedia] = useState(moduleData ? moduleData.tipo_multimedia : '');
 
-  // Función para manejar los cambios en el contenido HTML de CKEditor
+  useEffect(() => {
+    setTitulo(moduleData ? moduleData.titulo_mod : '');
+    setDescripcion(moduleData ? moduleData.instrucciones : '');
+    setTipoMultimedia(moduleData ? moduleData.tipo_multimedia : '');
+  }, [moduleData]);
+
   const handleCKEditorChange = (event, editor) => {
-    const data = editor.getData(); // Obtener el contenido HTML enriquecido
-    setDescripcion(data); // Actualizar el estado con el contenido HTML
+    const data = editor.getData();
+    setDescripcion(data);
   };
 
   return (
     <>
       <Modal size="lg" show={show} onHide={onHide}>
         <Modal.Header closeButton>
-          <Modal.Title>Identificación - Act 1</Modal.Title>
+          <Modal.Title>{activityTitle}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -57,8 +63,8 @@ function CustomModal(props) {
               <Form.Label>Descripción</Form.Label>
               <CKEditor
                 editor={ClassicEditor}
-                data={descripcion} // Inicializar CKEditor con el contenido HTML enriquecido
-                onChange={handleCKEditorChange} // Manejar cambios en CKEditor
+                data={descripcion}
+                onChange={handleCKEditorChange}
               />
             </Form.Group>
           </Form>
