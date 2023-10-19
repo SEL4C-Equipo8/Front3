@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CustomModal from './components/CustomModal';
 import './Modulos.css';
 import Header from './components/Header';
-import { createModule, editModule, deleteModule, getModulesByActivity } from './models/Module';
+import { createModule, editModule, deleteModule, getModulesByActivity, getModuleDetail } from './models/Module';
 import axios from 'axios';
 
 const Modulos = () => {
@@ -20,15 +20,16 @@ const Modulos = () => {
     tipo_multimedia: '',
   });
 
-  const handleOpenModal = (boxTitle, activityIndex, existingModuleData) => {
+  const handleOpenModal = async (boxTitle, activityIndex, existingModuleData) => {
     setActivityToEdit({ boxTitle, activityIndex });
-    setShowModal(true);
-
+    
     if (existingModuleData) {
-      setModuleData({
-        ...existingModuleData,
-        idActividad: activityIndex
-      });
+      const result = await getModuleDetail(activityIndex, existingModuleData.id_modulo);
+      if (result.success) {
+        setModuleData(result.data);
+      } else {
+        console.error(result.message);
+      }
     } else {
       setModuleData({
         idActividad: activityIndex,
@@ -38,6 +39,7 @@ const Modulos = () => {
         tipo_multimedia: '',
       });
     }
+    setShowModal(true);
   };
 
   const handleCloseModal = () => {
@@ -179,6 +181,7 @@ const Modulos = () => {
                   onHide={handleCloseModal}
                   moduleData={moduleData}
                   onSave={onSave}
+                  activityTitle={activity.titulo}
                 />
               </div>
             );
