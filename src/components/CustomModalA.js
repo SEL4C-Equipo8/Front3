@@ -85,6 +85,12 @@ function CustomModalA(props) {
                 onChange={(e) => setDescripcion(e.target.value)}
               />
             </Form.Group>
+            <Form.Group className="mb-3" controlId="formImagen">
+        <Form.Label>Imagen</Form.Label>
+        <Form.Control
+            type="file"
+        />
+    </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -109,7 +115,6 @@ function CustomModalA(props) {
 }
 
 export default CustomModalA;
-
 
 
 

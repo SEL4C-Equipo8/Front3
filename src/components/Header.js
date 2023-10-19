@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Container, Nav, Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./Header.css"; // Importa el archivo CSS
+import "./Header.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -11,17 +11,24 @@ function Header() {
   const navigate = useNavigate();
   const brandStyles = {
     color: "black",
-    fontWeight: "bold", // Para hacer el texto en negritas
-    fontSize: "30px", // Para aumentar el tamaño de la letra
+    fontWeight: "bold",
+    fontSize: "30px",
   };
 
   const navbarStyles = {
-    borderBottom: "4px solid gray", // Línea de color gris debajo del encabezado
-    backgroundColor: "white", // Fondo blanco
+    borderBottom: "4px solid gray",
+    backgroundColor: "white",
   };
 
-  const [showProfileModal, setShowProfileModal] = useState(false); // Estado para el modal
-  const [adminData, setAdminData] = useState(null);
+  // Datos predeterminados
+  const defaultAdminData = {
+    correo: "jroberto.gc@gmail.com",
+    username: "JoseRobertoGC"
+  };
+
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [adminData, setAdminData] = useState(defaultAdminData);
+  const [ setIsLoading] = useState(false); // Nuevo estado para controlar la carga
   const id_admin = localStorage.getItem("id_admin");
 
   const handleLogout = () => {
@@ -44,17 +51,20 @@ function Header() {
 
   useEffect(() => {
     if (showProfileModal && id_admin) {
-      // Realiza la petición al backend para obtener los detalles del administrador
+      setIsLoading(true); // Indicar que está cargando
       axios
         .get(`/api/admin/${id_admin}/`)
         .then((response) => {
           setAdminData(response.data);
+          setIsLoading(false); // Indicar que ha terminado de cargar
         })
         .catch((error) => {
           console.error("Error al obtener los datos del administrador:", error);
+          setIsLoading(false); // Indicar que ha terminado de cargar
         });
     }
-  }, [showProfileModal, id_admin]);
+  }, [showProfileModal, id_admin,setIsLoading]);
+  
 
   return (
     <header>
@@ -98,7 +108,7 @@ function Header() {
       {/* Añadimos el componente Modal aquí */}
       <Modal show={showProfileModal} onHide={() => setShowProfileModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Perfil del Usuario</Modal.Title>
+          <Modal.Title>Perfil del Administrador</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {adminData ? (
@@ -115,12 +125,6 @@ function Header() {
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            variant="secondary"
-            onClick={() => setShowProfileModal(false)}
-          >
-            Cerrar
-          </Button>
           <Button variant="danger" onClick={handleLogout}>
             Cerrar Sesión
           </Button>
