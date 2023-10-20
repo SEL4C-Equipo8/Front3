@@ -39,6 +39,7 @@ function Gestion() {
   
       const response = await axios.get(url, {
         headers: {
+
           'Content-Type': 'application/json'
         }
       });
@@ -55,9 +56,10 @@ function Gestion() {
 
   const handleDeleteActivity = async (idActividad) => {
     try {
-      const response = await axios.delete(`/api/admin/activities/${idActividad}/`, {
+      const response = await axios.delete(`${BASE_URL}/api/admin/activities/${idActividad}/`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
         },
       });
   
