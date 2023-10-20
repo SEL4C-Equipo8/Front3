@@ -35,7 +35,7 @@ function Header() {
     axios
       .get("/api/admin/logout/")
       .then((response) => {
-        if (response.data.includes("Sesion cerrada")) {
+        if (response === 200 || 304) {
           localStorage.removeItem("id_admin");
           console.log(id_admin);
           navigate("/", { state: { toastMessage: "Sesiòn cerrada exitòsamente" } });
